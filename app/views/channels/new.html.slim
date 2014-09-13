@@ -1,0 +1,9 @@
+h1
+  | Request new channel
+p
+  | Please give a short name and description of the channel.
+p
+  = simple_form_for @channel do |f|
+    = f.input :name
+    = f.input :subdomain
+    = f.button :submit

@@ -1,0 +1,10 @@
+h1
+  | Channel overview
+p
+  ul
+    - @channels.each do |channel|
+      li
+        = link_to channel.name, root_url(subdomain: channel.subdomain)
+        = link_to 'approve', approve_channel_path(channel), method: :put unless channel.active? or channel.inactive?
+    li
+      = link_to 'request new channel', new_channel_path

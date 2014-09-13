@@ -1,0 +1,7 @@
+h1
+  | New quote on 
+  = @channel.name
+p
+  = simple_form_for @quote do |f|
+    = f.input :body
+    = f.button :submit

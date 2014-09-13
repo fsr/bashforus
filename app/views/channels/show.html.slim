@@ -1,0 +1,22 @@
+h1
+  | Quotes from 
+  = @channel.name
+  | | 
+  = link_to 'New quote', new_quote_path
+p
+  ul
+    - @quotes.each do |quote|
+      li
+        .quote
+          .body
+            = quote.to_html.html_safe
+          .like
+            .count
+              = quote.likes.count
+            .action
+              = link_to 'Like', quote_like_path(quote), method: :post
+          .dislike
+            .count
+              = quote.dislikes.count
+            .action
+              = link_to 'Dislike', quote_dislike_path(quote), method: :post
