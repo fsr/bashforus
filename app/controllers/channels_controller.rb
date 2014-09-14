@@ -7,7 +7,7 @@ class ChannelsController < ApplicationController
   end
 
   def show
-  	@quotes = @channel.quotes.sort_by{|quote|quote.rating}
+  	@quotes = @channel.quotes.sort_by{|quote|quote.rating}.reverse
   end
 
   def new
