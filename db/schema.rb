@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140912155313) do
+ActiveRecord::Schema.define(version: 20140914073433) do
 
   create_table "channels", force: true do |t|
     t.string   "name"
@@ -60,6 +60,14 @@ ActiveRecord::Schema.define(version: 20140912155313) do
 
   add_index "nicknames", ["slug"], name: "index_nicknames_on_slug", unique: true
   add_index "nicknames", ["user_id"], name: "index_nicknames_on_user_id"
+
+  create_table "nicknames_quotes", force: true do |t|
+    t.integer "nickname_id"
+    t.integer "quote_id"
+  end
+
+  add_index "nicknames_quotes", ["nickname_id"], name: "index_nicknames_quotes_on_nickname_id"
+  add_index "nicknames_quotes", ["quote_id"], name: "index_nicknames_quotes_on_quote_id"
 
   create_table "quotes", force: true do |t|
     t.text     "body"

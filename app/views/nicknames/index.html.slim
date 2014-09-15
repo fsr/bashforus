@@ -1,0 +1,8 @@
+h1
+  | Nicknames#index
+p
+  | Find me in app/views/nicknames/index.html.erb
+  ul
+    - @nicknames.each do |nickname|
+      li= nickname.name
+

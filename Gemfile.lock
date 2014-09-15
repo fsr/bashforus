@@ -30,6 +30,8 @@ GEM
     acts-as-taggable-on (3.4.1)
       activerecord (>= 3.2, < 5)
     arel (5.0.1.20140414130214)
+    autoprefixer-rails (3.1.0.20140911)
+      execjs
     bcrypt (3.1.7)
     better_errors (2.0.0)
       coderay (>= 1.0.0)
@@ -37,6 +39,8 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.2.0.2)
+      sass (~> 3.2)
     builder (3.2.2)
     cancan (1.6.10)
     coderay (1.1.0)
@@ -149,8 +153,10 @@ PLATFORMS
 
 DEPENDENCIES
   acts-as-taggable-on
+  autoprefixer-rails
   better_errors
   binding_of_caller
+  bootstrap-sass (~> 3.2.0)
   cancan
   coffee-rails (~> 4.0.0)
   devise

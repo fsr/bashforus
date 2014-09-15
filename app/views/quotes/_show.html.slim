@@ -1,0 +1,5 @@
+h2= quote.created_at
+p= quote.to_html.html_safe
+p
+  =link_to 'Like', quote_like_path(quote), method: :post
+  =link_to 'Dislike', quote_dislike_path(quote), method: :post

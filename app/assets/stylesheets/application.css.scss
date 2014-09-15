@@ -14,19 +14,27 @@
  *= require_self
  */
 
-.quote {
-	.body {
-		.speaker {
-			display: inline;
-		}
-		.speaker:after {
-			content: ">";
-		}
-		.tag {
-			display: inline;
-		}
-		.tag:before {
-			content: "#";
-		}
-	}
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+	padding-top: 50px;
+	padding-bottom: 20px;
 }
+
+// .quote {
+// 	.body {
+// 		.speaker {
+// 			display: inline;
+// 		}
+// 		.speaker:after {
+// 			content: ">";
+// 		}
+// 		.tag {
+// 			display: inline;
+// 		}
+// 		.tag:before {
+// 			content: "#";
+// 		}
+// 	}
+// }

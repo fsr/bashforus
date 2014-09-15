@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   match '/', to: 'channels#index', constraints: { subdomain: '' }, via: [:get, :post, :put, :patch, :delete]
   match '/', to: 'channels#show', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
   root to: 'channels#index'
+
 end

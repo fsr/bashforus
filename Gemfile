@@ -43,10 +43,6 @@ gem 'html2slim', group: :development
 
 gem 'powify', group: :development
 
-gem 'devise'
-gem 'rolify'
-gem 'cancan'
-
 gem 'better_errors', group: :development
 gem 'binding_of_caller', group: :development
 gem 'simple_form'
@@ -55,3 +51,5 @@ gem 'acts-as-taggable-on'
 gem 'rolify'
 gem 'cancan'
 gem 'friendly_id', '~> 5.0.0'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'

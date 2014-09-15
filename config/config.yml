@@ -1,0 +1,16 @@
+defaults: &defaults
+    domain: 'beta.fsrbash.dev'
+
+development:
+    <<: *defaults
+
+test:
+    <<: *defaults
+
+staging:
+    <<: *defaults
+    domain: 'beta.fsrbash.de'
+
+production:
+    <<: *defaults
+    domain: 'fsrbash.de'

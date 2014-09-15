@@ -1,10 +1,21 @@
-ul
-  li= link_to 'Home', root_path
-  li= link_to 'Quotes by tags', tag_index_path
-  li= link_to 'Quotes by source', by_index_path
-  - unless current_user
-    li= link_to 'Sign In', new_user_session_path
-    li= link_to 'Sign Up', new_user_registration_path
-  - else
-    li= link_to 'Profile', edit_user_registration_path
-    li= link_to 'Sign Out', destroy_user_session_path, method: :delete
+.navbar.navbar-inverse.navbar-fixed-top role='navigation'
+  .container
+    .navbar-header
+      button.navbar-toggle.collapsed data-toggle='collapse' data-target='.navbar-collapse' type='button'
+        span.sr-only Toggle Navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand href="#{root_url}"
+        = bash_title
+    .navbar-collapse
+      ul.nav.navbar-nav
+        li.active= link_to 'Home', root_path
+        li= link_to 'by tags', tag_index_path
+        li= link_to 'by source', by_index_path
+        - unless current_user
+          li= link_to 'Sign In', new_user_session_path
+          li= link_to 'Sign Up', new_user_registration_path
+        - else
+          li= link_to 'Profile', edit_user_registration_path
+          li= link_to 'Sign Out', destroy_user_session_path, method: :delete
