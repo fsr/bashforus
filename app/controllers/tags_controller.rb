@@ -2,7 +2,7 @@ class TagsController < ApplicationController
   before_filter :set_quotes
 
   def index
-  	@tags = ActsAsTaggableOn::Tag.all
+  	@tags = Quote.tag_counts
   end
 
   def show

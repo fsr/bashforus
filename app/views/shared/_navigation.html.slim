@@ -10,12 +10,12 @@
         = bash_title
     .navbar-collapse
       ul.nav.navbar-nav
-        li.active= link_to 'Home', root_path
-        li= link_to 'by tags', tag_index_path
-        li= link_to 'by source', by_index_path
+        li class="#{navigation_active_on :channels}"= link_to 'Home', root_path
+        li class="#{navigation_active_on :tags}"= link_to 'by tags', tag_index_path
+        li class="#{navigation_active_on :nicknames}"= link_to 'by source', by_index_path
         - unless current_user
-          li= link_to 'Sign In', new_user_session_path
-          li= link_to 'Sign Up', new_user_registration_path
+          li class="#{navigation_active_on 'devise/sessions'}"= link_to 'Sign In', new_user_session_path
+          li class="#{navigation_active_on 'devise/registrations'}"= link_to 'Sign Up', new_user_registration_path
         - else
-          li= link_to 'Profile', edit_user_registration_path
-          li= link_to 'Sign Out', destroy_user_session_path, method: :delete
+          li class="#{navigation_active_on 'devise/registrations'}"= link_to 'Profile', edit_user_registration_path
+          li class="#{navigation_active_on 'devise/sessions'}"= link_to 'Sign Out', destroy_user_session_path, method: :delete

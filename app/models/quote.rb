@@ -1,3 +1,5 @@
+require 'source_parser'
+require 'tag_parser'
 class Quote < ActiveRecord::Base
 	include QuotesHelper
 
@@ -13,5 +15,13 @@ class Quote < ActiveRecord::Base
 
 	def rating
 		(self.likes.count+1.0)/(self.dislikes.count+1.0)
+	end
+
+	private
+	def set_related_sources
+		source_list.add body, parser:SourceParser
+	end
+	def set_related_tags
+		tag_list.add body, parser:TagParser
 	end
 end

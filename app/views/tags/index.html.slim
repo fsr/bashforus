@@ -1,4 +1,4 @@
-h1
-  | Tags#index
-p
-  | Find me in app/views/tags/index.html.erb
+.container
+  .row
+    - @tags.each do |tag|
+      .col-md-12= render partial: 'tags/show', locals:{tag:tag}

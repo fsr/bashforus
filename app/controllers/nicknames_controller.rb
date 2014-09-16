@@ -2,7 +2,7 @@ class NicknamesController < ApplicationController
   before_filter :set_nickname, only: :show
 
   def index
-  	@nicknames = Nickname.all
+  	@nicknames = Quote.source_counts
   end
 
   def show
