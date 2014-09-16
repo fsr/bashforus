@@ -1,10 +1,10 @@
-h1
-  | Channel overview
-p
-  ul
+.jumbotron
+  .container
+    h1= bash_title
+    p= link_to 'request new channel', new_channel_path
+.container
+  .row
     - @channels.each do |channel|
-      li
-        = link_to channel.name, root_url(subdomain: channel.subdomain)
-        = link_to 'approve', approve_channel_path(channel), method: :put unless channel.active? or channel.inactive?
-    li
-      = link_to 'request new channel', new_channel_path
+      .col-md-12
+        = render partial: 'channels/show', locals:{channel:channel}
+      
