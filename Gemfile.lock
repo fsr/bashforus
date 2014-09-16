@@ -214,6 +214,7 @@ DEPENDENCIES
   html2slim
   jquery-rails
   powify
+  puma
   rails (= 4.1.4)
   rolify
   sass-rails (~> 4.0.3)

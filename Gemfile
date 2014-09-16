@@ -37,3 +37,5 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano3-puma', github: 'seuros/capistrano-puma'
 end
+
+gem 'puma', group: [:production, :staging ]
