@@ -4,7 +4,7 @@ set :repo_url, 'git@github.com:fsr/bashforus.git'
 set :deploy_to, "/home/#{fetch(:application)}/#{fetch(:stage)}"
 set :pty, true
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets}
-set :linked_files, %w{config/private.yml}
+set :linked_files, ['config/private.yml', "db/#{fetch(:stage)}.sqlite3"]
 set :bundle_flags, '--deployment'
 set :rvm_ruby_version, 'ruby@bashforus'
 set :puma_rackup, -> { File.join(current_path, 'config.ru') }
