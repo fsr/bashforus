@@ -1,6 +1,7 @@
 lock '3.2.1'
+set :application, 'fsrbash'
 set :repo_url, 'git@github.com:fsr/bashforus.git'
-set :deploy_to, "/home/fsrbash/#{fetch(:stage)}"
+set :deploy_to, "/home/#{fetch(:application)}/#{fetch(:stage)}"
 set :pty, true
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets}
 set :linked_files, %w{config/private.yml}
