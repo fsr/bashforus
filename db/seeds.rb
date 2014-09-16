@@ -5,3 +5,16 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+admin = User.where(email: 'bashforus@example.com').first_or_create(password:'p4ssw0rd!',password_confirmation:'p4ssw0rd!')
+admin.confirm! unless admin.confirmed?
+admin.add_role :admin
+puts <<END
+Created administrator
+
+eMail addess: bashforus@example.com
+password:     p4ssw0rd!
+
+Please change the password really soon!
+END

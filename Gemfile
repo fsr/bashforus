@@ -20,6 +20,7 @@ gem 'autoprefixer-rails'
 gem 'whenever', require: false
 gem 'backup'
 gem 'active_model_serializers'
+gem 'devise-bootstrap-views'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'

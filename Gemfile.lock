@@ -87,6 +87,7 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    devise-bootstrap-views (0.0.3)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.2.1)
@@ -239,6 +240,7 @@ DEPENDENCIES
   capistrano3-puma!
   coffee-rails (~> 4.0.0)
   devise
+  devise-bootstrap-views
   friendly_id (~> 5.0.0)
   html2slim
   jquery-rails
