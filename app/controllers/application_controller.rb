@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   	if channels.count > 0
   	  @channel = channels.first
   	elsif request.subdomain != ''
-  	  redirect_to root_url
+  	  redirect_to root_url(subdomain:'')
   	end  		
   end
 end
