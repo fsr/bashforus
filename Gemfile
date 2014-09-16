@@ -36,6 +36,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-puma', github: 'seuros/capistrano-puma'
+  gem 'mailcatcher'
 end
 
 gem 'puma', group: [:production, :staging ]

@@ -1,5 +1,7 @@
 defaults: &defaults
     domain: 'beta.fsrbash.dev'
+    mailer_address: 'localhost'
+    mailer_smtp_port: 1025
 
 development:
     <<: *defaults
@@ -10,6 +12,8 @@ test:
 staging:
     <<: *defaults
     domain: 'beta.fsrbash.de'
+    mailer_address: 'mail.stei.gr'
+    mailer_smtp_port: 25
 
 production:
     <<: *defaults
