@@ -1,3 +1,3 @@
-h2= tag.name
+h2= tag_html('#' + tag.name).html_safe
 - Quote.tagged_with(tag.name).each do |quote|
   = render partial: 'quotes/show', locals: { quote: quote }
