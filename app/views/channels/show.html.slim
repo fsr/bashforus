@@ -5,4 +5,4 @@
 .container
   .row
     - @quotes.each do |quote|
-      .col-md-12= render partial: 'quotes/show', locals:{quote:quote}
+      = render partial: 'quotes/show', locals:{quote:quote}

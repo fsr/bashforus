@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140914073433) do
+ActiveRecord::Schema.define(version: 20140917085839) do
 
   create_table "channels", force: true do |t|
     t.string   "name"
@@ -25,9 +25,11 @@ ActiveRecord::Schema.define(version: 20140914073433) do
     t.integer  "quote_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "dislikes", ["quote_id"], name: "index_dislikes_on_quote_id"
+  add_index "dislikes", ["user_id"], name: "index_dislikes_on_user_id"
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -46,9 +48,11 @@ ActiveRecord::Schema.define(version: 20140914073433) do
     t.integer  "quote_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "likes", ["quote_id"], name: "index_likes_on_quote_id"
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
 
   create_table "nicknames", force: true do |t|
     t.integer  "user_id"

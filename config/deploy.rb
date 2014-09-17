@@ -18,6 +18,7 @@ set :puma_role, :app
 set :puma_init_active_record, false
 set :puma_preload_app, true
 
+set :team_notifications_token, '8244e83a14c8b168b8ab87470671983a'
 set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
 namespace :deploy do

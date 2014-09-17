@@ -69,6 +69,8 @@ GEM
     capistrano-rvm (0.1.1)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    capistrano-team_notifications (3.0.0)
+      capistrano (~> 3.0)
     chronic (0.10.2)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -91,6 +93,8 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.2.1)
+    font-awesome-rails (4.2.0.0)
+      railties (>= 3.2, < 5.0)
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
     haml (4.0.5)
@@ -237,10 +241,12 @@ DEPENDENCIES
   capistrano-bundler
   capistrano-rails
   capistrano-rvm
+  capistrano-team_notifications
   capistrano3-puma!
   coffee-rails (~> 4.0.0)
   devise
   devise-bootstrap-views
+  font-awesome-rails
   friendly_id (~> 5.0.0)
   html2slim
   jquery-rails

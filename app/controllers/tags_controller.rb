@@ -1,5 +1,8 @@
 class TagsController < ApplicationController
-  before_filter :set_quotes
+  include QuotesHelper
+  before_filter :set_tag, only: :show
+  before_filter :filter_quotes, only: :show
+  before_filter :collect_sources, only: :show
 
   def index
   	@tags = Quote.tag_counts
@@ -9,7 +12,17 @@ class TagsController < ApplicationController
   end
 
   private
-  def set_quotes
-  	@quotes = Quote.tagged_with params[:id]
+  def set_tag
+    @tag = params[:id]
+  end
+  def filter_quotes
+    @quotes = Quote.tagged_with(@tag,on: :tags)
+  end
+  def collect_sources
+    @sources = @quotes.collect do |quote|
+      quote.source_list
+    end.flatten.uniq.collect do |source|
+     nickname_html(source + '>')
+   end
   end
 end

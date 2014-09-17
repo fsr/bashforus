@@ -1,4 +1,12 @@
-h1
-  | Nicknames#show
-p
-  | Find me in app/views/nicknames/show.html.erb
+.jumbotron
+  .container
+    h1= nickname_html(@nickname + '>').html_safe
+    p
+      | talking about
+      - @tags.collect do |tag|
+      	= tag.html_safe
+.container
+  .row
+    .col-md-12
+      - @quotes.each do |quote|
+        = render partial: 'quotes/show', locals: { quote: quote }

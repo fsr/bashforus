@@ -1,4 +1,5 @@
 class ChannelsController < ApplicationController
+  load_and_authorize_resource except: :create
 
   before_filter :set_channel, except: [ :index, :show, :new, :create ] 
 

@@ -1,4 +1,5 @@
 class QuotesController < ApplicationController
+  load_and_authorize_resource except: :create
   def show
   end
   def new

@@ -21,6 +21,8 @@ gem 'whenever', require: false
 gem 'backup'
 gem 'active_model_serializers'
 gem 'devise-bootstrap-views'
+gem 'puma', group: [:production, :staging ]
+gem 'font-awesome-rails'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
@@ -37,7 +39,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-puma', github: 'seuros/capistrano-puma'
+  gem 'capistrano-team_notifications', require: false
   gem 'mailcatcher'
 end
 
-gem 'puma', group: [:production, :staging ]

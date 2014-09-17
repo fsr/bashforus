@@ -1,5 +1,12 @@
-h2= quote.created_at
-p= quote.body
-p
-  =link_to 'Like', quote_like_path(quote), method: :post
-  =link_to 'Dislike', quote_dislike_path(quote), method: :post
+.col-md-1.col-sm-1.col-xs-1
+  = like_action quote
+  = "&nbsp;".html_safe
+  = quote.likes.count
+.col-md-1.col-sm-1.col-xs-1
+  = dislike_action quote
+  = "&nbsp;".html_safe
+  = quote.dislikes.count
+
+.col-md-10.col-sm-10.col-xs-10= quote.to_html
+.col-md-12.col-sm-12.col-xs-12
+  hr

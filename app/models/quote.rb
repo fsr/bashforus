@@ -17,6 +17,24 @@ class Quote < ActiveRecord::Base
 		(self.likes.count+1.0)/(self.dislikes.count+1.0)
 	end
 
+	def to_html
+		body.sub("\r\n"," <br/> ").split(' ').collect do |word|
+			case
+			when is_html_tag(word)
+				word
+			when is_tag(word)
+				tag_html word
+			when is_nickname(word)
+				nickname_html word
+			else
+				word + " "
+			end
+		end.join.html_safe
+	end
+
+	def is_rateable_by? user_id
+		(likes.where(user_id: user_id).count + dislikes.where(user_id: user_id).count) == 0
+	end
 	private
 	def set_related_sources
 		source_list.add body, parser:SourceParser

@@ -1,7 +1,12 @@
-h1
-  | Tags#show
-p
-  | Find me in app/views/tags/show.html.erb
-  ul
-    - @tags.each do |tag|
-      li= tag
+.jumbotron
+  .container
+    h1= tag_html('#' + @tag).html_safe
+    p
+      | featuring
+      - @sources.collect do |source|
+        = "<nickname>#{source}</nickname>".html_safe
+.container
+  .row
+    .col-md-12
+      - @quotes.each do |quote|
+        = render partial: 'quotes/show', locals: { quote: quote }

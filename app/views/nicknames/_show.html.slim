@@ -1,0 +1,3 @@
+h2= nickname_html(nickname.name + '>').html_safe
+- Quote.tagged_with(nickname, on: :sources).each do |quote|
+  = render partial: 'quotes/show', locals: { quote: quote }
