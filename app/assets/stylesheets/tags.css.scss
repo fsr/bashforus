@@ -1,14 +1,3 @@
-tag:after {
-	content: ' ';
-}
+@import 'highlights';
 
-tag {
-	a {
-		color: black;
-	}
-	background-color: lightgreen;
-	border-radius: 2px;
-	padding: 0 0 1px 1px;
-	margin-right: 1px;
-	margin-left: 1px;
-}
+tag { @include highlighted_word(lightgreen); }

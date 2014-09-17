@@ -1,0 +1,9 @@
+@mixin highlighted_word($highlight_color) {
+	:after { content: ' '; }
+	a      { color: black; }
+	background-color: $highlight_color;
+	border-radius:   .15em;
+	padding:         0 0 .05em .1em;
+	margin-right:    .05em;
+	margin-left:     .05em;
+}
