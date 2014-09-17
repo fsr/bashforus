@@ -5,7 +5,9 @@ class TagsController < ApplicationController
   before_filter :collect_sources, only: :show
 
   def index
-  	@tags = Quote.tag_counts
+  	@tags = Quote.tag_counts.sort_by do |tag|
+      tag.taggings_count
+    end.reverse
   end
 
   def show

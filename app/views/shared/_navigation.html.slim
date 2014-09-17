@@ -10,8 +10,7 @@
         = bash_title
     .navbar-collapse
       ul.nav.navbar-nav
-        li class="#{navigation_active_on :channels}"= link_to 'Home', root_path
-        li class="#{navigation_active_on :tags}"= link_to 'by tags', tag_index_path
+        li class="#{navigation_active_on :tags}"= link_to 'by tag', tag_index_path
         li class="#{navigation_active_on :nicknames}"= link_to 'by source', by_index_path
         - unless current_user
           li class="#{navigation_active_on 'devise/sessions'}"= link_to 'Sign In', new_user_session_path
