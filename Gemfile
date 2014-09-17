@@ -20,7 +20,7 @@ gem 'autoprefixer-rails'
 gem 'whenever', require: false
 gem 'backup'
 gem 'active_model_serializers'
-gem 'devise-bootstrap-views'
+gem 'devise-bootstrap-views', github: 'steigr/devise-bootstrap-views'
 gem 'puma', group: [:production, :staging ]
 gem 'font-awesome-rails'
 
