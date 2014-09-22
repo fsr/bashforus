@@ -14,6 +14,6 @@ module QuotesHelper
 	end
 	def nickname_html word
 		nickname = word.scan(/@(\w+)/)[0][0]
-		word.sub("##{nickname}","<nickname><a href='/by/#{nickname}'>@#{nickname}</a></nickname>")
+		word.sub("@#{nickname}","<nickname><a href='/by/#{nickname}'>@#{nickname}</a></nickname>")
 	end
 end
