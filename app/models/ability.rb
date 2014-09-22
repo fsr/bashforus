@@ -18,6 +18,9 @@ class Ability
 	can :read, Quote
 	can [:enable, :disable], Quote, owner_id: user.id
 
+
+	can :create, Like
+	can :create, Dislike
 	can :manage, User if user.has_role?(:admin)
   end
 end

@@ -11,6 +11,6 @@ class DislikesController < ApplicationController
   private
 
   def set_quote
-  	@quote = Quote.find(params[:quote_id])
+  	@quote = Quote.find(params[:id])
   end
 end
