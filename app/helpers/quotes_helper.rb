@@ -6,14 +6,14 @@ module QuotesHelper
 		word =~ /^#(\w+)/
 	end
 	def tag_html word
-		tag = word.scan(/#([^:, ]+)/)
+		tag = word.scan(/#([^:, ]+)/)[0][0]
 		word.sub("##{tag}","<tag><a href='/tag/#{tag}'>##{tag}</a></tag>")
 	end
 	def is_nickname word
 		word =~ /^@(\w+)/ ? true : false
 	end
 	def nickname_html word
-		nickname = word.scan(/@([^:, ]+)/)
+		nickname = word.scan(/@([^:, ]+)/)[0][0]
 		word.sub("@#{nickname}","<nickname><a href='/by/#{nickname}'>@#{nickname}</a></nickname>")
 	end
 end
