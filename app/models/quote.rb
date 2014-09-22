@@ -35,6 +35,11 @@ class Quote < ActiveRecord::Base
 	def is_rateable_by? user_id
 		(likes.where(user_id: user_id).count + dislikes.where(user_id: user_id).count) == 0
 	end
+
+	def is_visible?
+		return false if visible == false
+		true
+	end
 	private
 	def set_related_sources
 		source_list.add body, parser:SourceParser

@@ -3,11 +3,14 @@
  *= require_self
  *= require tags
  *= require nicknames
+ *= require quotes
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+@import "modern";
+@import "admin";
 
 body { padding: 50px 0 20px 0; }
 

@@ -1,0 +1,7 @@
+= simple_form_for(@user, url: admin_user_path(@user)) do |f|
+	= f.input :email, required: true
+	= f.input :password
+	= f.input :password_confirmation
+
+= simple_form_for(@user, url: admin_role_path(@user)) do |f|
+	= f.collection [ :admin, :global_moderator ]

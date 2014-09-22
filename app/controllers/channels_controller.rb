@@ -7,22 +7,46 @@ class ChannelsController < ApplicationController
   	@channels = Channel.all
   end
 
-  def show
-  	@quotes = @channel.quotes.sort_by{|quote|quote.rating}.reverse
-  end
-
   def new
   	@channel = Channel.new
   end
 
   def create
   	@channel = Channel.new channel_params
+    current_user.add_role :owner, @channel
   	@channel.state = 'unapproved'
   	if @channel.save
       redirect_to root_url
   	else
   	  render 'new'
   	end
+  end
+
+  def edit
+  end
+
+  def update
+    respond_to do |format|
+      if @channel.update channel_params
+        format.html { redirect_to root_url, subdomain: '' }
+        format.json { render json: @channel, status: :accepted }
+      else
+        format.html { render 'edit' }
+        format.json { render json: @channel.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    respond_to do |format|
+      if @channel.destroy
+        format.html { redirect_to root_url, subdomain: '' }
+        format.json { render json: @channel.errors, status: :no_content}
+      else
+        format.html { redirect_to root_url, subdomain: '' }
+        format.json { render json: @channel.errors, status: :unprocessable_entity}
+      end
+    end
   end
 
   def approve

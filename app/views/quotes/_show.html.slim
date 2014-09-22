@@ -1,12 +1,23 @@
-.col-md-1.col-sm-1.col-xs-1
-  = like_action quote
-  = "&nbsp;".html_safe
-  = quote.likes.count
-.col-md-1.col-sm-1.col-xs-1
-  = dislike_action quote
-  = "&nbsp;".html_safe
-  = quote.dislikes.count
+.row.quote class="#{'disabled' unless quote.is_visible?}"
+  .col-md-1.col-sm-1.col-xs-1
+    = like_action quote
+    = "&nbsp;".html_safe
+    = quote.likes.count
+  .col-md-1.col-sm-1.col-xs-1
+    = dislike_action quote
+    = "&nbsp;".html_safe
+    = quote.dislikes.count
 
-.col-md-10.col-sm-10.col-xs-10= quote.to_html
-.col-md-12.col-sm-12.col-xs-12
-  hr
+  .col-md-10.col-sm-10.col-xs-10
+    = quote.to_html
+  .col-md-12.col-sm-12.col-xs-12
+    - if can? :manage, quote
+      = link_to 'Edit', edit_quote_path(quote)
+      = link_to 'Delete', quote_path(quote), method: :delete
+      - if quote.is_visible?
+  	    = link_to 'Hide', disable_quote_path(quote), method: :post
+      - else 
+  	    = link_to 'Show', enable_quote_path(quote), method: :post
+.row
+  .col-md-12.col-sm-12.col-xs-12
+    hr

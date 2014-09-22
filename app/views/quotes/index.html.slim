@@ -1,0 +1,5 @@
+.container
+  h1 Quotes
+  hr
+  - @quotes.each do |quote|
+    = render partial: 'quotes/show', locals:{quote:quote}

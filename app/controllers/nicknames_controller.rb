@@ -1,5 +1,7 @@
 class NicknamesController < ApplicationController
+
   include QuotesHelper
+
   before_filter :set_nickname, only: :show
   before_filter :filter_quotes, only: :show
   before_filter :collect_tags, only: :show

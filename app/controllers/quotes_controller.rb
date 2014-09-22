@@ -1,19 +1,73 @@
 class QuotesController < ApplicationController
   load_and_authorize_resource except: :create
+  before_filter :set_quote, except: [:index, :create, :new]
+
+  def index
+    @quotes = @channel.quotes.sort_by{|quote|quote.rating}.reverse
+  end
+
   def show
   end
+
   def new
   	@quote = @channel.quotes.build
   end
+
   def create
   	@quote  = @channel.quotes.build quote_params
-  	if @quote.save
-  		redirect_to root_url, subdomain: @channel.subdomain
-  	else
-  		render 'new'
-  	end
+    @quote.visible = true
+    respond_to do |format|
+      if @quote.save
+        format.html { redirect_to root_url, subdomain: @channel.subdomain }
+        format.json { render json: @quote, status: :accepted }
+      else
+        format.html { render 'new' }
+        format.json { render json: @quote, status: :unprocessable_entity }
+      end
+    end
   end
+
+  def disable
+    respond_to do |format|
+      if @quote.update visible: false
+        format.html { redirect_to request.referrer }
+        format.json { render json: @quote, status: :accepted }
+      else
+        format.html { redirect_to request.referrer }
+        format.json { render json: @quote, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def enable
+    respond_to do |format|
+      if @quote.update visible: true
+        format.html { redirect_to request.referrer }
+        format.json { render json: @quote, status: :accepted }
+      else
+        format.html { redirect_to request.referrer }
+        format.json { render json: @quote, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @subdomain = @quote.channel.subdomain
+    respond_to do |format|
+      if @quote.destroy
+        format.html { redirect_to root_url, subdomain: @subdomain }
+        format.json { render json: @quote.errors, status: :no_content}
+      else
+        format.html { redirect_to quote_path @quote }
+        format.json { render json: @quote.errors, status: :unprocessable_entity}
+      end
+    end
+  end
+
   private
+  def set_quote
+    @quote = Quote.find(params[:id])
+  end
   def quote_params
   	params.require(:quote).permit(:body)
   end

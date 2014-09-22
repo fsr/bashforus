@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917085839) do
+ActiveRecord::Schema.define(version: 20140921181905) do
 
   create_table "channels", force: true do |t|
     t.string   "name"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20140917085839) do
     t.datetime "updated_at"
     t.integer  "channel_id"
     t.integer  "owner_id"
+    t.boolean  "visible"
   end
 
   add_index "quotes", ["channel_id"], name: "index_quotes_on_channel_id"

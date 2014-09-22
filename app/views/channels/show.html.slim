@@ -1,8 +1,0 @@
-.jumbotron
-  .container
-    h1= bash_title
-    p= link_to 'submit new quote', new_quote_path
-.container
-  .row
-    - @quotes.each do |quote|
-      = render partial: 'quotes/show', locals:{quote:quote}

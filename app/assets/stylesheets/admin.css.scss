@@ -1,0 +1,9 @@
+ul.navbar-nav.admin {
+	li.active {
+		a { background-color: coral; }
+		a:hover { background-color: #FF6F00; }
+	}
+	li {
+		a:hover { color: #FF6F00; }
+	}
+}

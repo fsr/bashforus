@@ -1,6 +1,10 @@
 module ApplicationHelper
 	def bash_title
-		@channel.present? ? "Quotes from #{@channel.name}" : "Bash For Us Quotes"
+		if @channel.present?
+			"&laquo;#{@channel.name}&raquo;".html_safe
+		else
+			"&laquo;&star;&raquo;".html_safe
+		end
 	end
 	def navigation_active_on controller
 		params[:controller].to_s == controller.to_s && 'active'

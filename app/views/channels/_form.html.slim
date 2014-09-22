@@ -1,0 +1,4 @@
+= simple_form_for(@channel, html: {class: 'form-horizontal'}) do |f|
+	= f.input :name, required: true
+	= f.input :subdomain, required: true, pattern: '[a-z0-9]+'
+	= f.button :submit

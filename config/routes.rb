@@ -10,17 +10,24 @@ Rails.application.routes.draw do
           put :deactivate
         end
       end
+      namespace :admin do
+        resources :users
+        resources :roles
+      end
     end
     resources :quotes do
-      match '/like', to: 'likes#create', via: :post
-      match '/dislike', to: 'dislikes#create', via: :post
+      member do 
+        post :disable
+        post :enable
+        post :like, to: 'likes#create'
+        post :dislike, to: 'dislikes#create'
+      end
     end
     resources :by, controller: 'nicknames'
     resources :tag, controller: 'tags'
   end
 
-  match '/', to: 'channels#index', constraints: { subdomain: '' }, via: [:get, :post, :put, :patch, :delete]
-  match '/', to: 'channels#show', constraints: { subdomain: /.+/ }, via: [:get, :post, :put, :patch, :delete]
+  match '/', to: 'channels#index', constraints: { subdomain: '' }, via: [:get, :post]
+  match '/', to: 'quotes#index', constraints: { subdomain: /.+/ }, via: :get
   root to: 'channels#index'
-
 end

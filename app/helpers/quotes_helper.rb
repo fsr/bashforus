@@ -19,11 +19,22 @@ module QuotesHelper
 	def like_action quote
 		return fa_icon('thumbs-o-up') unless current_user
 		return fa_icon('thumbs-o-up') unless quote.is_rateable_by? current_user.id
-		link_to fa_icon('thumbs-o-up'),quote_like_path(quote), method: :post
+		link_to fa_icon('thumbs-o-up'),like_quote_path(quote), method: :post
 	end
 	def dislike_action quote
 		return fa_icon('thumbs-o-down') unless current_user
 		return fa_icon('thumbs-o-down') unless quote.is_rateable_by? current_user.id
-		link_to fa_icon('thumbs-o-down'), quote_dislike_path(quote), method: :post
+		link_to fa_icon('thumbs-o-down'), dislike_quote_path(quote), method: :post
+	end
+	def visibility_class quote
+		unless quote.is_visible?
+			if can? :moderate, quote
+				"ghostly"
+			else
+				"invisible"
+			end
+		else
+			"visible"
+		end
 	end
 end

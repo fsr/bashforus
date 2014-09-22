@@ -1,6 +1,12 @@
 h2
   = link_to channel.name, root_url(subdomain: channel.subdomain)
   = " (#{channel.quotes.count} quotes)"
-p= link_to 'approve', approve_channel_path(channel), method: :put unless channel.active? or channel.inactive?
+- if can? :approve, channel
+	a class='button' = link_to 'approve', approve_channel_path(channel), method: :put
+- if can? :edit, channel
+	a class='button' = link_to 'edit', edit_channel_path(channel)
+- if can? :delete, channel
+	a class='button' = link_to 'delete', channel_path(channel), method: :delete, confirm: 'Are you sure?'
+
 
 
