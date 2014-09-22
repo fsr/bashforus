@@ -10,6 +10,22 @@ class QuotesController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+
+  def update
+    respond_to do |format|
+      if @quote.update quote_params
+        format.html { redirect_to root_url, subdomain: @channel.subdomain }
+        format.json { render json: @quote, status: :accepted }
+      else
+        format.html { render action: 'edit' }
+        format.json { render json: @quote, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def new
   	@quote = @channel.quotes.build
   end
@@ -23,7 +39,7 @@ class QuotesController < ApplicationController
         format.html { redirect_to root_url, subdomain: @channel.subdomain }
         format.json { render json: @quote, status: :accepted }
       else
-        format.html { render 'new' }
+        format.html { render action: 'new' }
         format.json { render json: @quote, status: :unprocessable_entity }
       end
     end
