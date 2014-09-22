@@ -11,6 +11,9 @@ class Quote < ActiveRecord::Base
 	after_save :set_related_sources
 	after_save :set_related_tags
 
+	after_update :set_related_sources
+	after_update :set_related_tags
+
 	acts_as_taggable_on :tags, :sources
 
 	def rating
