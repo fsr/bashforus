@@ -1,0 +1,21 @@
+.btn-group
+  / button.btn.btn-default
+  /   = link_to fa_icon('thumbs-o-up'), like_quote_path(quote), method: :post, style: 'color: #5cb85c'
+  / button.btn.btn-default
+  /   = link_to fa_icon('thumbs-o-down'), dislike_quote_path(quote), method: :post, style: 'color: #f0ad4e'
+  button.btn.btn-default
+    = link_to fa_icon('pencil'), edit_admin_user_path(user), style: 'color: #5e5e5e'
+  button.btn.btn-default
+    = link_to fa_icon('trash'), admin_user_path(user), method: :delete, style: 'color: #f0ad4e'
+  - if @channel
+    button.btn.btn-default
+      - if user.has_role? :moderator, @channel
+        = link_to fa_icon('star'), revoke_role_path(user.id, :moderator), method: :post, style: 'color: #f0ad4e'
+      - else
+        = link_to fa_icon('star-o'), grant_role_path(user.id, :moderator), method: :post, style: 'color: #f0ad4e'
+  - else
+    button.btn.btn-default
+      - if user.has_role? :admin
+        = link_to fa_icon('star'), revoke_role_path(user.id,:admin), method: :post, style: 'color: #f0ad4e'
+      - else
+        = link_to fa_icon('star-o'), grant_role_path(user.id,:admin), method: :post, style: 'color: #f0ad4e'

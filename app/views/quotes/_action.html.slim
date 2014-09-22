@@ -1,0 +1,14 @@
+.btn-group
+  button.btn.btn-default
+    = link_to fa_icon('thumbs-o-up')+' '+quote.likes.count.to_s, like_quote_path(quote), method: :post, style: 'color: #5cb85c'
+  button.btn.btn-default
+    = link_to fa_icon('thumbs-o-down')+' '+quote.dislikes.count.to_s, dislike_quote_path(quote), method: :post, style: 'color: #f0ad4e'
+  button.btn.btn-default
+    = link_to fa_icon('pencil'), edit_quote_path(quote), style: 'color: #5e5e5e'
+  button.btn.btn-default
+    - if quote.visible
+      = link_to fa_icon('eye'), disable_quote_path(quote), method: :post, style: 'color: #5e5e5e'
+    - else
+      = link_to fa_icon('eye-slash'), enable_quote_path(quote), method: :post, style: 'color: #5e5e5e'
+  button.btn.btn-default
+    = link_to fa_icon('trash'), quote, method: :delete, style: 'color: #f0ad4e'

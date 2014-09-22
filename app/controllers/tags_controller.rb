@@ -24,7 +24,7 @@ class TagsController < ApplicationController
     @sources = @quotes.collect do |quote|
       quote.source_list
     end.flatten.uniq.collect do |source|
-     nickname_html(source + '>')
+     nickname_html('@' + source)
    end
   end
 end

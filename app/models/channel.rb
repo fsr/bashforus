@@ -1,4 +1,5 @@
 class Channel < ActiveRecord::Base
+  resourcify
   has_many :quotes
   def approve
   	self.update(state:'active')

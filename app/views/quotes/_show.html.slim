@@ -1,16 +1,8 @@
 .row.quote class="#{'disabled' unless quote.is_visible?}"
-  .col-md-1.col-sm-1.col-xs-1= like_action quote
-  .col-md-1.col-sm-1.col-xs-1= dislike_action quote
-  .col-md-10.col-sm-10.col-xs-10
-    = quote.to_html
-  .col-md-12.col-sm-12.col-xs-12
-    - if can? :manage, quote
-      = link_to 'Edit', edit_quote_path(quote)
-      = link_to 'Delete', quote_path(quote), method: :delete
-      - if quote.is_visible?
-  	    = link_to 'Hide', disable_quote_path(quote), method: :post
-      - else 
-  	    = link_to 'Show', enable_quote_path(quote), method: :post
+  .col-md-9.col-sm-9.col-xs-9
+    p= quote.to_html
+  .col-md-3.col-sm-3.col-xs-3
+    = render partial: 'quotes/action', locals:{quote:quote}
 .row
   .col-md-12.col-sm-12.col-xs-12
     hr

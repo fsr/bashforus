@@ -3,7 +3,8 @@ class QuotesController < ApplicationController
   before_filter :set_quote, except: [:index, :create, :new]
 
   def index
-    @quotes = @channel.quotes.sort_by{|quote|quote.rating}.reverse
+    @quotes = @channel.quotes.where(visible:true) + @channel.quotes.where(owner:@current_user)
+    @quotes = @quotes.uniq.sort_by{|quote|quote.rating}.reverse
   end
 
   def show
@@ -15,6 +16,7 @@ class QuotesController < ApplicationController
 
   def create
   	@quote  = @channel.quotes.build quote_params
+    @quote.owner = current_user
     @quote.visible = true
     respond_to do |format|
       if @quote.save

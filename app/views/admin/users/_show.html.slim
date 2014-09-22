@@ -1,0 +1,8 @@
+.row
+  .col-md-9.col-sm-9.col-xs-9
+    p= user.email
+  .col-md-3.col-sm-3.col-xs-3
+    = render partial: 'admin/users/action', locals:{user:user}
+.row
+  .col-md-12.col-sm-12.col-xs-12
+    hr

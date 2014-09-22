@@ -12,7 +12,12 @@ Rails.application.routes.draw do
       end
       namespace :admin do
         resources :users
-        resources :roles
+      end
+      resource :role do
+        collection do
+          match '/grant/:user_id/:role', to: 'role#grant', via: :post, as: :grant
+          match '/revoke/:user_id/:role', to: 'role#revoke', via: :post, as: :revoke
+        end
       end
     end
     resources :quotes do

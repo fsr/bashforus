@@ -1,6 +1,4 @@
 h1
   | User Management
-p
-  ul
-  	- @users.each do |user|
-  		li = link_to user.email, edit_admin_user_path(user)
+  - @users.each do |user|
+    = render partial: 'admin/users/show', locals: {user:user}
