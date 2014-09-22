@@ -1,5 +1,2 @@
-.container
-  .row
-    - @tags.each do |tag|
-      .col-md-12
-        = render partial: 'tags/show', locals:{tag:tag}
+- @tags.each do |tag|
+  = render partial: 'tags/show', locals:{tag:tag}

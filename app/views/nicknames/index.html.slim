@@ -1,5 +1,2 @@
-.container
-  .row
-    - @nicknames.each do |nickname|
-      .col-md-12
-        = render partial: 'nicknames/show', locals:{nickname:nickname}
+- @nicknames.each do |nickname|
+  = render partial: 'nicknames/show', locals:{nickname:nickname}

@@ -14,7 +14,7 @@ class Quote < ActiveRecord::Base
 	acts_as_taggable_on :tags, :sources
 
 	def rating
-		(self.likes.count+1.0)/(self.dislikes.count+1.0)
+		self.likes.count - self.dislikes.count
 	end
 
 	def to_html

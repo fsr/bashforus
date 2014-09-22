@@ -17,14 +17,14 @@ module QuotesHelper
 		"<nickname><a href='/by/#{nickname}'><i class='fa fa-user'></i>#{nickname}</a></nickname>"
 	end
 	def like_action quote
-		return fa_icon('thumbs-o-up') unless current_user
-		return fa_icon('thumbs-o-up') unless quote.is_rateable_by? current_user.id
-		link_to fa_icon('thumbs-o-up'),like_quote_path(quote), method: :post
+		return "<button class='btn btn-disabled'>#{fa_icon('thumbs-o-up')} #{quote.likes.count}</button>".html_safe unless current_user
+		return "<button class='btn btn-disabled'>#{fa_icon('thumbs-o-up')} #{quote.likes.count}".html_safe unless quote.is_rateable_by? current_user.id
+		link_to "#{fa_icon('thumbs-o-up')} #{quote.likes.count}".html_safe,like_quote_path(quote), method: :post, class: 'btn btn-success'
 	end
 	def dislike_action quote
-		return fa_icon('thumbs-o-down') unless current_user
-		return fa_icon('thumbs-o-down') unless quote.is_rateable_by? current_user.id
-		link_to fa_icon('thumbs-o-down'), dislike_quote_path(quote), method: :post
+		return "<button class='btn btn-disabled'>#{fa_icon('thumbs-o-down')} #{quote.dislikes.count}</button>".html_safe unless current_user
+		return "<button class='btn btn-disabled'>#{fa_icon('thumbs-o-down')} #{quote.dislikes.count}</button>".html_safe unless quote.is_rateable_by? current_user.id
+		link_to "#{fa_icon('thumbs-o-down')} #{quote.dislikes.count}".html_safe, dislike_quote_path(quote), method: :post, class: 'btn btn-danger'
 	end
 	def visibility_class quote
 		unless quote.is_visible?
