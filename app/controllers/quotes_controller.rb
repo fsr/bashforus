@@ -5,9 +5,17 @@ class QuotesController < ApplicationController
   def index
     @quotes = @channel.quotes.where(visible:true) + @channel.quotes.where(owner:@current_user)
     @quotes = @quotes.uniq.sort_by{|quote|quote.rating}.reverse
+    respond_to do |format|
+      format.html
+      format.json { render json: @quotes }
+    end
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @quote }
+    end
   end
 
   def edit
