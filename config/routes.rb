@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   shallow do
     resources :channels, only: [ :new, :create ]
+    get :contact, to: 'contacts#new', as: :contact
+    post :contact, to: 'contacts#create'
     authenticate :user, lambda { |u| u.has_role? :admin } do
       resources :channels, except: [ :new, :create ] do
         member do

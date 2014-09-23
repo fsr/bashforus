@@ -2,7 +2,6 @@
   p.pull-left
     = "© 2014 #{mail_to 'Mathias Kaufmann','me@stei.gr'}, All Rights Reserved".html_safe
     ul.pull-right.list-inline
-	  li
-	    a(href='https://github.com/fsr/bashforus') GitHub Project
-	  li
-	    a(href='https://github.com/fsr/bashforus/issues') Issues
+      li= link_to 'Contact', contact_path
+      li= link_to 'GitHub Project', 'https://github.com/fsr/bashforus'
+      li= link_to 'Issues', 'https://github.com/fsr/bashforus/issues'
