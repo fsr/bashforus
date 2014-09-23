@@ -2,7 +2,10 @@ defaults: &defaults
     domain: 'beta.fsrbash.dev'
     mailer_address: 'localhost'
     mailer_smtp_port: 1025
-
+    nickname_format: >
+     @([^:, \.\'"]+)
+    tag_format: >
+     #([^:, \.\'"]+)
 development:
     <<: *defaults
 
