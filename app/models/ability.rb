@@ -26,7 +26,7 @@ class Ability
     end
 
     can :create, Quote if user.id != nil
-    can :edit, Quote do |quote|
+    can [:edit, :update], Quote do |quote|
       quote.owner == user
     end
 
