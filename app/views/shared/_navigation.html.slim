@@ -11,7 +11,7 @@
     .navbar-collapse.collapse
       ul.nav.navbar-nav
         - if @channel
-          li class="#{navigation_active_on :quotes}"= link_to 'quote!', new_quote_path
+          li class="#{navigation_active_on :quotes, :new}"= link_to 'quote!', new_quote_path
           li class="#{navigation_active_on :tags}"= link_to 'by tag', tag_index_path
           li class="#{navigation_active_on :nicknames}"= link_to 'by source', by_index_path
       ul.nav.navbar-nav.navbar-right

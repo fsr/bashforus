@@ -8,6 +8,7 @@ class QuotesController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render json: @quotes }
+      format.atom
     end
   end
 
@@ -19,6 +20,9 @@ class QuotesController < ApplicationController
   end
 
   def edit
+    respond_to do |format|
+      format.html
+    end
   end
 
 
@@ -36,6 +40,9 @@ class QuotesController < ApplicationController
 
   def new
   	@quote = @channel.quotes.build
+    respond_to do |format|
+      format.html
+    end
   end
 
   def create

@@ -6,7 +6,11 @@ module ApplicationHelper
 			"&laquo;&star;&raquo;".html_safe
 		end
 	end
-	def navigation_active_on controller
-		params[:controller].to_s == controller.to_s && 'active'
+	def navigation_active_on controller, action=nil
+		unless action
+			return params[:controller].to_s == controller.to_s && 'active'
+		else
+			return params[:controller].to_s == controller.to_s && params[:action].to_s == action.to_s && 'active'
+		end
 	end
 end

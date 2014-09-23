@@ -19,7 +19,7 @@ p
 .page-header
   h3 Nicknames
 ul.col-sm-offset-2.col-sm-10 style='list-style:none; padding-left: 5px'
-  - resource.source_list.each do |nickname|
+  - resource.source_listresource.source_list.each do |nickname|
     li
       .btn-group
          = link_to '@'+nickname, by_path(nickname), class: 'btn btn-info', style: 'background-color: coral; border-color: coral'
