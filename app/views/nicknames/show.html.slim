@@ -3,8 +3,7 @@
     h1= nickname_html('@' + @nickname).html_safe
     p
       | talking about
-      - @tags.collect do |tag|
-      	= tag.html_safe
+      = @tags.to_sentence.html_safe
     - if can? :claim, @nickname
       p= link_to "claim", claim_by_path(@nickname), method: :post, class: 'btn btn-info'
     - if can? :revert, @nickname

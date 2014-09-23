@@ -3,8 +3,7 @@
     h1= tag_html('#' + @tag).html_safe
     p
       | featuring
-      - @sources.collect do |source|
-        = "<nickname>#{source}</nickname>".html_safe
+      = @sources.to_sentence.html_safe
 .container
   .row
     .col-md-12
