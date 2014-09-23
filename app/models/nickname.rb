@@ -20,4 +20,7 @@ class Nickname < String
 		user.source_list.remove self
 		user.save
 	end
+	def user
+		User.tagged_with(self, on: :sources).first
+	end
 end

@@ -1,0 +1,6 @@
+.page-header
+  h3 My Color
+ul.col-sm-offset-2.col-sm-10 style='list-style:none; padding-left: 5px'
+  - resource.colorcodes.each do |colorcode|
+    li style='display: inline; margin-right: 0.4em; padding: 0;'
+      = link_to fa_icon(:eye), user_color_path(colorcode), remote: true, method: :post, class: 'btn', style: "background-color: ##{colorcode}; border-color: ##{colorcode}; color: ##{sprintf("%X", colorcode.hex ^ 0xFFFFFF)}"

@@ -7,6 +7,10 @@ class RegistrationsController < Devise::RegistrationsController
     XmppClient.notification title: 'Hello', message: 'hello from #bash', user: current_user.jabber_id if current_user.jabber_id.present?
     respond_to { |f| f.js }
   end
+  def set_color
+    current_user.update color: params[:color]
+    respond_to { |f| f.js }
+  end
   def update
   	update_params = account_update_params
     if update_params[:current_password].blank?
@@ -24,6 +28,7 @@ class RegistrationsController < Devise::RegistrationsController
       render "edit"
     end
   end
+
 
   private
  

@@ -1,0 +1,12 @@
+div id='nickname'
+  .page-header 
+    h3 My Nicknames
+  ul.col-sm-offset-2.col-sm-10 style='list-style:none; padding-left: 5px;'
+    - current_user.source_list.each do |nickname|
+      - nickname = Nickname.new nickname
+      - color = ( nickname.user && nickname.user.color ) ? nickname.user.color : Digest::MD5.hexdigest(nickname)[1..6]
+      li
+        .btn-group
+           = link_to '@'+nickname, by_path(nickname), class: 'btn btn-default', style: "background-color: ##{color}; border-color: ##{color}"
+           = link_to 'revert', revert_by_path(nickname), method: :post, class: 'btn btn-warning'
+  

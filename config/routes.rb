@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/pushover/test', to: 'registrations#pushover_test', as:  'user_registration_pushover_test'
     post 'users/xmpp/test', to: 'registrations#xmpp_test', as:  'user_registration_xmpp_test'
+    post 'users/color/:color', to: 'registrations#set_color', as: 'user_color'
   end
   devise_for :users, :controllers => { registrations: 'registrations' }
   shallow do

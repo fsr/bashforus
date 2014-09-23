@@ -13,8 +13,9 @@ module QuotesHelper
 		word =~ /^@(\w+)/ ? true : false
 	end
 	def nickname_html word
-		nickname = word.scan(Regexp.new(CONFIG['nickname_format'].strip))[0][0]
-		word.sub("@#{nickname}","<nickname style='background-color: ##{Digest::MD5.hexdigest(nickname)[1..6]}'><a href='#{by_url nickname}'>@#{nickname}</a></nickname>")
+		nickname = Nickname.new word.scan(Regexp.new(CONFIG['nickname_format'].strip))[0][0]
+		color = ( nickname.user && nickname.user.color ) ? nickname.user.color : Digest::MD5.hexdigest(nickname)[1..6]
+		word.sub("@#{nickname}","<nickname style='background-color: ##{color}'><a href='#{by_url nickname}'>@#{nickname}</a></nickname>")
 	end
 	def quote_url quote
 		Rails.application.routes.url_helpers.quote_url(id: quote.id, host: CONFIG['domain'],subdomain: ( @channel || channel).subdomain)
