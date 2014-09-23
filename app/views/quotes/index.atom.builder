@@ -7,7 +7,11 @@ atom_feed do |feed|
       entry.content(quote.to_html, type: 'html')
 
       entry.author do |author|
-        author.name(quote.owner.email)
+        if quote.owner.present
+          author.name(quote.owner.email)
+        else
+          auhtor.name('unknown source')
+        end
       end
     end
   end
