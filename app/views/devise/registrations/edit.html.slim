@@ -9,13 +9,15 @@ p
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         p= "Currently waiting confirmation for: #{resource.unconfirmed_email}"
     = f.input :pushover_key
+    = f.input :jabber_id
     = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
     = f.input :password_confirmation, required: false
     = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
     .form-group
       .col-sm-offset-2.col-sm-8
         = f.button :submit, "Update", class: 'btn btn-info'
-        = render partial: 'devise/registrations/pushover_test_btn' if resource.pushover_key != nil
+        = render partial: 'devise/registrations/pushover_test_btn' unless resource.pushover_key.blank?
+        = render partial: 'devise/registrations/xmpp_test_btn' unless resource.jabber_id.blank?
           
 .page-header
   h3 My Nicknames

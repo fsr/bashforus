@@ -1,0 +1,4 @@
+- if not defined? tested
+  = link_to 'Test XMPP', user_registration_xmpp_test_path, method: :post, remote: :true, class: 'btn btn-default', id: 'xmpp_test_btn'
+- else
+  = link_to 'XMPP Tested!', user_registration_xmpp_test_path, method: :post, remote: :true, class: 'btn btn-default', id: 'xmpp_test_btn'

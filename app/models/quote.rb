@@ -48,6 +48,12 @@ class Quote < ActiveRecord::Base
 			url: quote_url(self)
 		}
 	end
+	def to_xmpp
+		{
+			title: "You have been quoted by #{owner.email}",
+			message: "#{body}, visit: #{quote_url(self)} for more details"
+		}
+	end
 	private
 	def set_related_sources
 		source_list.uniq.each{|s|source_list.remove(s)}

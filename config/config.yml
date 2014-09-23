@@ -2,6 +2,7 @@ defaults: &defaults
     domain: 'beta.fsrbash.dev'
     mailer_address: 'localhost'
     mailer_smtp_port: 1025
+    jabber_id: 'hashbash@stei.gr/hashbash'
     nickname_format: >
      @([^:, \.\'"]+)
     tag_format: >

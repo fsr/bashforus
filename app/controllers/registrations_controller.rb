@@ -1,11 +1,11 @@
 class RegistrationsController < Devise::RegistrationsController
   def pushover_test
-  	if current_user.pushover_key.present?
-	  Pushover.notification message: 'hello from #bash', user: current_user.pushover_key
-	end
-	respond_to do |format|
-	  format.js
-	end
+	  Pushover.notification message: 'hello from #bash', user: current_user.pushover_key if current_user.pushover_key.present?
+    respond_to { |f| f.js }
+  end
+  def xmpp_test
+    XmppClient.notification title: 'Hello', message: 'hello from #bash', user: current_user.jabber_id if current_user.jabber_id.present?
+    respond_to { |f| f.js }
   end
   def update
   	update_params = account_update_params
@@ -28,6 +28,6 @@ class RegistrationsController < Devise::RegistrationsController
   private
  
   def account_update_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password, :pushover_key)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :current_password, :pushover_key, :jabber_id)
   end
 end

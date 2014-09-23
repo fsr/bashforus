@@ -23,6 +23,7 @@ gem 'active_model_serializers'
 gem 'puma', group: [:production, :staging ]
 gem 'font-awesome-rails'
 gem 'pushover'
+gem 'xmpp4r'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
