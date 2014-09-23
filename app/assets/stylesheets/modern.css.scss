@@ -149,11 +149,6 @@ $navbar-default-link-hover-bg: transparent;
 $navbar-default-brand-color: $gray-darker;
 $navbar-default-brand-hover-color: $brand-primary;
 
-.navbar {
-    margin-bottom: 18px;
-    border: 1px solid transparent;
-}
-
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
   border-color: rgba(238, 238, 238, 0.95);
@@ -186,7 +181,7 @@ body {
   -o-filter: blur(10px) saturate(2);
   -ms-filter: blur(10px) saturate(2);
   filter: blur(10px) saturate(2);
-  opacity: 0.95;
+  opacity: 0.4;
   padding-bottom: 10px;
   padding-top: 10px;
   height: 70px;
