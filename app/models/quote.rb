@@ -10,6 +10,7 @@ class Quote < ActiveRecord::Base
 
 	after_save :set_related_sources
 	after_save :set_related_tags
+	after_save :notify_users
 
 	acts_as_taggable_on :tags, :sources
 
@@ -40,6 +41,13 @@ class Quote < ActiveRecord::Base
 		return false if visible == false
 		true
 	end
+	def to_pushover
+		{ 
+			title: "You have been quoted by #{owner.email}",
+			message: body.truncate(250),
+			url: quote_url(self)
+		}
+	end
 	private
 	def set_related_sources
 		source_list.uniq.each{|s|source_list.remove(s)}
@@ -48,5 +56,8 @@ class Quote < ActiveRecord::Base
 	def set_related_tags
 		tag_list.uniq.each{|t|tag_list.remove(t)}
 		tag_list.add body, parser:TagParser
+	end
+	def notify_users
+    	User.tagged_with(source_list, on: :sources, any: true).collect{|u|User.find(u.id).notify self}
 	end
 end

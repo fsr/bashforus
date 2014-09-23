@@ -1,0 +1,4 @@
+- if not defined? tested
+  = link_to 'Test Pushover', user_registration_pushover_test_path, method: :post, remote: :true, class: 'btn btn-default', id: 'pushover_test_btn'
+- else
+  = link_to 'Pushover Tested!', user_registration_pushover_test_path, method: :post, remote: :true, class: 'btn btn-default', id: 'pushover_test_btn'

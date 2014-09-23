@@ -1,3 +1,6 @@
 @import 'highlights';
 
-tag { @include highlighted_word(lightgreen); }
+tag {
+	@include highlighted_word;
+	background-color: lightgreen;
+}

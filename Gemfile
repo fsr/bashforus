@@ -22,6 +22,7 @@ gem 'backup'
 gem 'active_model_serializers'
 gem 'puma', group: [:production, :staging ]
 gem 'font-awesome-rails'
+gem 'pushover'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
@@ -41,4 +42,3 @@ group :development do
   gem 'capistrano-team_notifications', require: false
   gem 'mailcatcher'
 end
-

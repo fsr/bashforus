@@ -8,4 +8,7 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :dislikes
   acts_as_taggable_on :sources
+  def notify resource
+  	Pushover.notification resource.to_pushover.merge(user:pushover_key) unless pushover_key.blank?
+  end
 end

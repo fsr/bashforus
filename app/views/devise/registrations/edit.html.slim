@@ -7,15 +7,16 @@ p
     = f.error_notification
     = f.input :email, required: true, autofocus: true
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        p
-          | Currently waiting confirmation for:
-    = resource.unconfirmed_email
+        p= "Currently waiting confirmation for: #{resource.unconfirmed_email}"
+    = f.input :pushover_key
     = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
     = f.input :password_confirmation, required: false
     = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
     .form-group
       .col-sm-offset-2.col-sm-8
-	    = f.button :submit, "Update", class: 'btn btn-info'
+        = f.button :submit, "Update", class: 'btn btn-info'
+        = render partial: 'devise/registrations/pushover_test_btn' if resource.pushover_key != nil
+          
 .page-header
   h3 My Nicknames
 ul.col-sm-offset-2.col-sm-10 style='list-style:none; padding-left: 5px'
