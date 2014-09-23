@@ -6,7 +6,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     = csrf_meta_tags
-    = auto_discovery_link_tag(:atom, root_url(format: "atom", subdomain: @channel.subdomain)) if @channel
+    = auto_discovery_link_tag(:atom, root_url(format: "atom", subdomain: @channel.subdomain), title: bash_title) if @channel
   body
     = render 'shared/navigation'
     .container
