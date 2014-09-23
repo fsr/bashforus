@@ -42,9 +42,11 @@ class Quote < ActiveRecord::Base
 	end
 	private
 	def set_related_sources
+		source_list.uniq.each{|s|source_list.remove(s)}
 		source_list.add body, parser:SourceParser
 	end
 	def set_related_tags
+		tag_list.uniq.each{|t|tag_list.remove(t)}
 		tag_list.add body, parser:TagParser
 	end
 end
