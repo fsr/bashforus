@@ -5,7 +5,6 @@ atom_feed do |feed|
     feed.entry(quote) do |entry|
       entry.title(Quote.first.body.truncate(20))
       entry.content(quote.to_html, type: 'html')
-
       entry.author do |author|
         if quote.owner.present?
           author.name(quote.owner.email)

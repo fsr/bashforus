@@ -7,13 +7,13 @@ module QuotesHelper
 	end
 	def tag_html word
 		tag = word.scan(/#([^:, ]+)/)[0][0]
-		word.sub("##{tag}","<tag><a href='/tag/#{tag}'>##{tag}</a></tag>")
+		word.sub("##{tag}","<tag><a href='#{Rails.application.routes.url_helpers.tag_url(id: tag, host: CONFIG['domain'],subdomain: channel.subdomain)}'>##{tag}</a></tag>")
 	end
 	def is_nickname word
 		word =~ /^@(\w+)/ ? true : false
 	end
 	def nickname_html word
 		nickname = word.scan(/@([^:, ]+)/)[0][0]
-		word.sub("@#{nickname}","<nickname><a href='/by/#{nickname}'>@#{nickname}</a></nickname>")
+		word.sub("@#{nickname}","<nickname><a href='#{Rails.application.routes.url_helpers.by_url(id: nickname, host: CONFIG['domain'],subdomain: channel.subdomain)}'>@#{nickname}</a></nickname>")
 	end
 end
