@@ -1,7 +1,7 @@
 .row.quote class="#{'disabled' unless quote.is_visible?}"
   .col-sm-8
     p= quote.to_html
-    p= "as heard as on #{I18n.l quote.created_at, format: :short}"
+    p= "as heard on #{I18n.l quote.created_at, format: :short}"
   - if not defined? action_bar
 	.col-sm-4
 	  = render partial: 'quotes/action', locals:{quote:quote}
