@@ -178,3 +178,21 @@ body {
     color: #121212;
     background-color: #ffffff;
 }
+
+
+.navbar-blur {
+  -webkit-filter: blur(10px) saturate(2);
+  -moz-filter: blur(10px) saturate(2);
+  -o-filter: blur(10px) saturate(2);
+  -ms-filter: blur(10px) saturate(2);
+  filter: blur(10px) saturate(2);
+  opacity: 0.95;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  height: 70px;
+  top: -20px;
+  background-color: inherit;
+}
+.navbar-translucent {
+  background-color: transparent;
+}
