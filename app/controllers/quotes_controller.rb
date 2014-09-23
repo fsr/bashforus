@@ -1,5 +1,6 @@
 class QuotesController < ApplicationController
   load_and_authorize_resource except: :create
+  skip_authorize_resource :only => :new
   before_filter :set_quote, except: [:index, :create, :new]
 
   def index

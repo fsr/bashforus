@@ -26,6 +26,8 @@ Rails.application.routes.draw do
         post :enable
         post :like, to: 'likes#create'
         post :dislike, to: 'dislikes#create'
+        delete :like, to: 'likes#destroy'
+        delete :dislike, to: 'dislikes#destroy'
       end
     end
     resources :by, controller: 'nicknames' do

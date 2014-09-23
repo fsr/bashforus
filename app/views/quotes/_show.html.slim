@@ -2,7 +2,7 @@
   .col-sm-8
     p= quote.to_html
   - if not defined? action_bar
-	.col-sm-2
+	.col-sm-4
 	  = render partial: 'quotes/action', locals:{quote:quote}
 .row
   .col-md-12.col-sm-12.col-xs-12
