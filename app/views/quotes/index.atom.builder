@@ -10,7 +10,7 @@ atom_feed do |feed|
         if quote.owner.present?
           author.name(quote.owner.email)
         else
-          auhtor.name('unknown source')
+          author.name('unknown source')
         end
       end
     end
