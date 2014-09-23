@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       end
     end
     resources :tag, controller: 'tags'
+    resources :moment, controller: 'moments'
   end
 
   match '/', to: 'channels#index', constraints: { subdomain: '' }, via: [:get, :post]
