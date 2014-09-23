@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :confirmable, :lockable, :timeoutable
   has_many :quotes, foreign_key: :owner_id
   has_many :nicknames
+  acts_as_taggable_on :sources
 end

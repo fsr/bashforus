@@ -28,7 +28,12 @@ Rails.application.routes.draw do
         post :dislike, to: 'dislikes#create'
       end
     end
-    resources :by, controller: 'nicknames'
+    resources :by, controller: 'nicknames' do
+      member do
+        post :claim
+        post :revert
+      end
+    end
     resources :tag, controller: 'tags'
   end
 

@@ -6,12 +6,6 @@ GIT
       capistrano (~> 3.0)
       puma (>= 2.6)
 
-GIT
-  remote: git://github.com/steigr/devise-bootstrap-views.git
-  revision: aa92c00322ea4114fb4650226f9171c21bb1cbbd
-  specs:
-    devise-bootstrap-views (0.0.3)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -250,7 +244,6 @@ DEPENDENCIES
   capistrano3-puma!
   coffee-rails (~> 4.0.0)
   devise
-  devise-bootstrap-views!
   font-awesome-rails
   friendly_id (~> 5.0.0)
   html2slim
