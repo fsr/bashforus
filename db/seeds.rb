@@ -25,4 +25,8 @@ eMail addess: #{admin_email}
 password:     #{admin_password}
 
 Please change the password really soon!
+
+You should adapt config/config.yml to your needs. Especially domain_name!
+
+If you arn't using pow (https://pow.cx) you may use the domain 'lvh.me' :-)
 END
