@@ -149,7 +149,18 @@ $navbar-default-link-hover-bg: transparent;
 $navbar-default-brand-color: $gray-darker;
 $navbar-default-brand-hover-color: $brand-primary;
 
+.navbar {
+    margin-bottom: 18px;
+    border: 1px solid transparent;
+}
+
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: rgba(238, 238, 238, 0.95);
+}
 .navbar-default {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-color: rgba(238, 238, 238, 0.95);
   border: 0;
   box-shadow: 0 1px 5px rgba(0,0,0,.15);
 
@@ -159,19 +170,11 @@ $navbar-default-brand-hover-color: $brand-primary;
     }
   }
 }
-.navbar-blur {
-  -webkit-filter: blur(10px) saturate(2);
-  -moz-filter: blur(10px) saturate(2);
-  -o-filter: blur(10px) saturate(2);
-  -ms-filter: blur(10px) saturate(2);
-  filter: blur(10px) saturate(2);
-  opacity: 0.95;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  height: 70px;
-  top: -20px;
-  background-color: inherit;
-}
-.navbar-translucent {
-  background-color: transparent;
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    line-height: 1.42857143;
+    color: #121212;
+    background-color: #ffffff;
 }

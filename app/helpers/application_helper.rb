@@ -8,9 +8,9 @@ module ApplicationHelper
 	end
 	def navigation_active_on controller, action=nil
 		unless action
-			return params[:controller].to_s == controller.to_s && 'active'
+			return 'active' if params[:controller].to_s == controller.to_s
 		else
-			return params[:controller].to_s == controller.to_s && params[:action].to_s == action.to_s && 'active'
+			return 'active' if params[:controller].to_s == controller.to_s && params[:action].to_s == action.to_s
 		end
 	end
 end
