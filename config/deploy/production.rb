@@ -1,4 +1,4 @@
-set :branch, 'develop'
+set :branch, 'releases/latest'
 
 set :bundle_without, 'development test'
 set :puma_env, fetch(:stage)

@@ -1,8 +1,9 @@
 .row.quote class="#{'disabled' unless quote.is_visible?}"
-  .col-md-9.col-sm-9.col-xs-9
+  .col-sm-8
     p= quote.to_html
-  .col-md-3.col-sm-3.col-xs-3
-    = render partial: 'quotes/action', locals:{quote:quote}
+  - if not defined? action_bar
+	.col-sm-2
+	  = render partial: 'quotes/action', locals:{quote:quote}
 .row
   .col-md-12.col-sm-12.col-xs-12
     hr

@@ -7,14 +7,22 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-admin = User.where(email: 'bashforus@example.com').first_or_create(password:'p4ssw0rd!',password_confirmation:'p4ssw0rd!')
-admin.confirm! unless admin.confirmed?
+admin_email = 'admin@local.host'
+admin_password = 'p4ssw0rd!'
+
+admin = User.where(email: admin_email ).first_or_create(password:admin_password,password_confirmation:admin_password)
+
+admin.skip_confirmation! unless admin.confirmed?
+
 admin.add_role :admin
-puts <<END
+
+admin.save!
+
+puts <<-END
 Created administrator
 
-eMail addess: bashforus@example.com
-password:     p4ssw0rd!
+eMail addess: #{admin_email}
+password:     #{admin_password}
 
 Please change the password really soon!
 END
