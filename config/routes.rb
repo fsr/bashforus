@@ -19,6 +19,11 @@ Rails.application.routes.draw do
       end
       namespace :admin do
         resources :users
+        resource :channel, only: [ :edit, :update ] do
+          collection do
+            put :membership, to: 'channels#membership'
+          end
+        end
       end
       resource :role do
         collection do
@@ -36,6 +41,7 @@ Rails.application.routes.draw do
         delete :like, to: 'likes#destroy'
         delete :dislike, to: 'dislikes#destroy'
       end
+      resources :comments
     end
     resources :by, controller: 'nicknames' do
       member do

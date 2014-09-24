@@ -1,0 +1,13 @@
+.page-header
+  h2 Configure Channel-Details
+p
+  = simple_form_for(@channel, url: admin_channel_path, defaults: { input_html: { class: 'form-control' } }, html: { method: :put ,class: 'form-horizontal' }) do |f|
+    = f.input :name, autofocus: true
+    = f.input :subdomain
+    = f.input :is_private
+    = f.input :send_pushover
+    = f.input :send_xmpp
+    = f.input :send_twitter
+    .form-group
+	    .col-sm-offset-2.col-sm-8
+		    = f.button :submit, class: 'btn btn-info'

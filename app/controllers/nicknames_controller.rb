@@ -7,6 +7,7 @@ class NicknamesController < ApplicationController
   before_filter :collect_tags, only: :show
 
   def index
+    authorize! :read, @channel
   	@nicknames = @channel.quotes.source_counts.sort_by do |source|
       source.taggings_count
     end.reverse

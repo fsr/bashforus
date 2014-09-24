@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140923232131) do
+ActiveRecord::Schema.define(version: 20140924190014) do
 
   create_table "channels", force: true do |t|
     t.string   "name"
@@ -19,7 +19,30 @@ ActiveRecord::Schema.define(version: 20140923232131) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "state"
+    t.boolean  "send_xmpp"
+    t.boolean  "send_pushover"
+    t.boolean  "send_twitter"
+    t.boolean  "is_private"
   end
+
+  create_table "channels_users", force: true do |t|
+    t.integer "channel_id"
+    t.integer "user_id"
+  end
+
+  add_index "channels_users", ["channel_id"], name: "index_channels_users_on_channel_id"
+  add_index "channels_users", ["user_id"], name: "index_channels_users_on_user_id"
+
+  create_table "comments", force: true do |t|
+    t.integer  "quote_id"
+    t.integer  "user_id"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["quote_id"], name: "index_comments_on_quote_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "dislikes", force: true do |t|
     t.integer  "quote_id"

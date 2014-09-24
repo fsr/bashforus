@@ -15,10 +15,17 @@ class Ability
     can :edit, Channel do |channel|
     	user.has_role? :moderator, channel
     end
-  	can :read, Channel
+
+  	can :read, Channel do |channel|
+      user.has_role?(:admin) or \
+      ( channel.is_private? and channel.users.include? user)
+    end
 
     can :manage, Quote if user.has_role?(:admin)
-  	can :read, Quote
+    can :read, Quote do |quote|
+      user.has_role?(:admin) or \
+      ( quote.channel.is_private? and quote.channel.users.include? user)
+    end
   	can [:enable, :disable], Quote, owner_id: user.id
 
     can [ :enable, :disable ], Quote do |quote|
@@ -40,5 +47,6 @@ class Ability
     can :revert, Nickname do |nickname|
       nickname.is_revertable? and ( user.has_role?(:moderator,@channel) or user.has_role?(:admin) )
     end
+    can :manage, Comment
   end
 end

@@ -5,6 +5,7 @@ class TagsController < ApplicationController
   before_filter :collect_sources, only: :show
 
   def index
+    authorize! :read, @channel
   	@tags = @channel.quotes.tag_counts.sort_by do |tag|
       tag.taggings_count
     end.reverse

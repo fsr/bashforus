@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :nicknames
   has_many :likes
   has_many :dislikes
+  has_many :comments
+  has_and_belongs_to_many :users
   acts_as_taggable_on :sources
   def colorcodes
     self.source_list.collect do |nickname|

@@ -2,6 +2,7 @@ class MomentsController < ApplicationController
   include QuotesHelper
 
   def index
+    authorize! :read, @channel
     case
     when current_user.present?
       if current_user.has_role? :admin
@@ -10,7 +11,7 @@ class MomentsController < ApplicationController
         @quotes = @channel.quotes.visible_or_owned_by(current_user.id)
       end
     else
-      @channel.quotes.visible
+      @quotes = @channel.quotes.visible
     end
     respond_to do |format|
       format.html {

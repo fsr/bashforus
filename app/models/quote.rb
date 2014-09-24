@@ -6,6 +6,7 @@ class Quote < ActiveRecord::Base
 	belongs_to :channel
 	has_many :likes
 	has_many :dislikes
+	has_many :comments
 	belongs_to :owner, class_name: 'User'
 
 	after_save :set_related_sources

@@ -1,0 +1,10 @@
+div id='channel_member_form'
+  - if @channel.is_private
+  	.page-header
+  	  h2 Memberships
+  	p
+  	  = simple_form_for(@channel, url: membership_admin_channel_path, defaults: { input_html: { class: 'form-control' } }, html: { method: :put ,class: 'form-horizontal' }) do |f|
+  	    = f.association :users, label_method: lambda { |user| user.email }
+        .form-group
+	      .col-sm-offset-2.col-sm-8
+		    = f.button :submit, class: 'btn btn-info'

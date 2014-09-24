@@ -1,2 +1,6 @@
 ul.nav.navbar-nav.navbar-right.admin style="margin-right: 15px"
-  li class="#{navigation_active_on 'admin/users'}"= link_to 'Users', admin_users_path
+  li class="#{navigation_active_on 'admin/users'}"
+    = link_to "#{fa_icon :gears} Users".html_safe, admin_users_path
+  - if @channel
+	li class="#{navigation_active_on 'admin/channels'}"
+	  = link_to "#{fa_icon :gears} Channel".html_safe, edit_admin_channel_path

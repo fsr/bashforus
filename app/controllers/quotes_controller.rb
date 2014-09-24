@@ -4,6 +4,7 @@ class QuotesController < ApplicationController
   before_filter :set_quote, except: [:index, :create, :new]
 
   def index
+    authorize! :read, @channel
     case
     when current_user.present?
       if current_user.has_role? :admin
@@ -12,7 +13,7 @@ class QuotesController < ApplicationController
         @quotes = @channel.quotes.visible_or_owned_by(current_user.id)
       end
     else
-      @channel.quotes.visible
+      @quotes = @channel.quotes.visible
     end
     @quotes = @quotes.uniq.sort_by{|quote|quote.rating}.reverse
     respond_to do |format|
@@ -49,6 +50,7 @@ class QuotesController < ApplicationController
   end
 
   def new
+    authorize! :read, @channel
   	@quote = @channel.quotes.build
     respond_to do |format|
       format.html
