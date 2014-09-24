@@ -3,19 +3,21 @@ module QuotesHelper
 		word =~ /^<([^>]+)>$/
 	end
 	def is_tag word
-		word =~ /^#(\w+)/
+		logger.debug "Checking if #{word} is tag"
+		not TagParser.new(word).parse.empty?
 	end
 	def tag_html word
-		tag = word.scan(Regexp.new(CONFIG['tag_format'].strip))[0][0]
-		word.sub("##{tag}","<tag><a href='#{tag_url tag}'>##{tag}</a></tag>")
+		logger.debug "Creating HTML for tag #{word}"
+		tag = Tag.new TagParser.new(word).parse.first
+		"<tag><a href='#{tag_url tag.strip}'>#{tag}</a></tag>"
 	end
 	def is_nickname word
-		word =~ /^@(\w+)/ ? true : false
+		not SourceParser.new(word).parse.empty?
 	end
 	def nickname_html word
-		nickname = Nickname.new word.scan(Regexp.new(CONFIG['nickname_format'].strip))[0][0]
+		nickname = Nickname.new SourceParser.new(word).parse.first
 		color = ( nickname.user && nickname.user.color ) ? nickname.user.color : Digest::MD5.hexdigest(nickname)[1..6]
-		word.sub("@#{nickname}","<nickname style='background-color: ##{color}'><a href='#{by_url nickname}'>@#{nickname}</a></nickname>")
+		"<nickname style='background-color: ##{color}'><a href='#{by_url nickname.strip}'>#{nickname}</a></nickname>"
 	end
 	def quote_url quote
 		Rails.application.routes.url_helpers.quote_url(id: quote.id, host: CONFIG['domain'],subdomain: ( @channel || channel).subdomain)

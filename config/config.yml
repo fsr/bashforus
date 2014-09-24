@@ -3,10 +3,14 @@ defaults: &defaults
     mailer_address: 'localhost'
     mailer_smtp_port: 1025
     jabber_id: 'hashbash@stei.gr/hashbash'
-    nickname_format: >
-     @([^:, \.\'"]+)
-    tag_format: >
-     #([^:, \.\'"]+)
+    word_separators: >
+      [:, !'"?+\n\r]
+    np_word_separators: >
+      [ \n\r\t]
+    p_word_separators: >
+      [:,!'"?+]
+    nickname_prefix: '@' 
+    tag_prefix: '#'
 development:
     <<: *defaults
 

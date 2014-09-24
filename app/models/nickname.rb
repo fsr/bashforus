@@ -21,6 +21,9 @@ class Nickname < String
 		user.save
 	end
 	def user
-		User.tagged_with(self, on: :sources).first
+		User.tagged_with(self.strip, on: :sources).first
+	end
+	def strip
+		self.sub(/^#{CONFIG['nickname_prefix']}/,'')
 	end
 end

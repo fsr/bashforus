@@ -24,6 +24,7 @@ gem 'puma', group: [:production, :staging ]
 gem 'font-awesome-rails'
 gem 'pushover'
 gem 'xmpp4r'
+gem 'will_paginate', '~> 3.0'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'

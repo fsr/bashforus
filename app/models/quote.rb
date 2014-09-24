@@ -14,12 +14,15 @@ class Quote < ActiveRecord::Base
 
 	acts_as_taggable_on :tags, :sources
 
+	scope :visible, ->              { where(visible:true) }
+	scope :visible_or_owned_by, -> (owner_id) { where("visible == 't' or owner_id == ?",owner_id )}
+	
 	def rating
 		(self.likes.count - self.dislikes.count) + "0.#{created_at.to_i}".to_f
 	end
 
 	def to_html
-		body.sub("\r\n"," <br/> ").split(' ').collect do |word|
+		QuoteSplitter.split(body.sub("\r\n"," <br/> ")).collect do |word|
 			case
 			when is_html_tag(word)
 				word

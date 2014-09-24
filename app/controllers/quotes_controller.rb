@@ -4,7 +4,16 @@ class QuotesController < ApplicationController
   before_filter :set_quote, except: [:index, :create, :new]
 
   def index
-    @quotes = @channel.quotes.where(visible:true) + @channel.quotes.where(owner:@current_user)
+    case
+    when current_user.present?
+      if current_user.has_role? :admin
+        @quotes = @channel.quotes
+      else
+        @quotes = @channel.visible_and_owned_by(current_user.id)
+      end
+    else
+      @channel.quotes.visible
+    end
     @quotes = @quotes.uniq.sort_by{|quote|quote.rating}.reverse
     respond_to do |format|
       format.html
