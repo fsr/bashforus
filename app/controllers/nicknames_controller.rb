@@ -33,7 +33,7 @@ class NicknamesController < ApplicationController
 
   private
   def set_nickname
-    @nickname = Nickname.new '@' + params[:id]
+    @nickname =  Nickname.new(params[:id])
   end
   def filter_quotes
     @quotes = @channel.quotes.tagged_with(@nickname,on: :sources)
