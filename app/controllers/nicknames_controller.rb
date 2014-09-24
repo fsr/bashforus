@@ -13,6 +13,10 @@ class NicknamesController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @quotes, root: 'quotes' }
+    end
   end
 
   def claim

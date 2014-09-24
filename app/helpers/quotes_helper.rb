@@ -6,16 +6,16 @@ module QuotesHelper
 		not TagParser.new(word).parse.empty?
 	end
 	def tag_html word
-		tag = Tag.new TagParser.new(word).parse.first
-		"<tag><a href='#{tag_url tag.strip}'>#{tag}</a></tag>"
+		tag = Tag.new word
+		"<tag><a href='#{tag_url tag}'>#{tag.raw}</a></tag>"
 	end
 	def is_nickname word
 		not SourceParser.new(word).parse.empty?
 	end
 	def nickname_html word
-		nickname = Nickname.new SourceParser.new(word).parse.first
+		nickname = Nickname.new word
 		color = ( nickname.user && nickname.user.color ) ? nickname.user.color : Digest::MD5.hexdigest(nickname)[1..6]
-		"<nickname style='background-color: ##{color}; color: #{sprintf("%X", color.hex ^ 0xFFFFFF)}'><a href='#{by_url nickname.strip}'>#{nickname}</a></nickname>"
+		"<nickname style='background-color: ##{color}' onMouseOut=\"this.style.backgroundColor='##{color}'\" onMouseOver=\"this.style.backgroundColor='##{sprintf("%X", color.hex ^ 0xFFFFFF)}'\"><a href='#{by_url nickname}'>#{nickname.raw}</a></nickname>"
 	end
 	def quote_url quote
 		Rails.application.routes.url_helpers.quote_url(id: quote.id, host: CONFIG['domain'],subdomain: ( @channel || channel).subdomain)

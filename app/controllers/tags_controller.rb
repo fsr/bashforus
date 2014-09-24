@@ -11,11 +11,15 @@ class TagsController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html
+      format.json { render json: @quotes, root: 'quotes' }
+    end
   end
 
   private
   def set_tag
-    @tag = params[:id]
+    @tag = Tag.new params[:id]
   end
   def filter_quotes
     @quotes = @channel.quotes.tagged_with(@tag,on: :tags)
