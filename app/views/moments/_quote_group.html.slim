@@ -1,0 +1,5 @@
+.page-header
+  h2= date.strftime('%b %Y')
+p
+  - quote_group.each do |quote|
+    = render partial: 'quotes/show', locals:{quote:quote}

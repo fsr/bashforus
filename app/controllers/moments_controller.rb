@@ -2,10 +2,20 @@ class MomentsController < ApplicationController
   include QuotesHelper
 
   def index
-    @quotes = @channel.quotes.where(visible:true) + @channel.quotes.where(owner:@current_user)
-    @quotes = @quotes.uniq.sort_by{|quote| quote.created_at }.reverse
+    case
+    when current_user.present?
+      if current_user.has_role? :admin
+        @quotes = @channel.quotes
+      else
+        @quotes = @channel.quotes.visible_or_owned_by(current_user.id)
+      end
+    else
+      @channel.quotes.visible
+    end
     respond_to do |format|
-      format.html
+      format.html {
+        @quotes = @quotes.group_by{ |q| q.created_at.beginning_of_month }
+      }
       format.json { render json: @quotes }
     end
   end
