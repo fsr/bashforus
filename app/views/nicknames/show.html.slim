@@ -1,6 +1,6 @@
 .jumbotron
   .container
-    h1= nickname_html('@' + @nickname).html_safe
+    h1= nickname_html(@nickname).html_safe
     p
       | talking about
       = @tags.to_sentence.html_safe

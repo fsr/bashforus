@@ -1,5 +1,5 @@
 .container
-  h1= tag_html('#' + tag.name).html_safe
+  h1= tag_html(tag.name).html_safe
   hr
   - Quote.tagged_with(tag.name).each do |quote|
 	= render partial: 'quotes/show', locals: { quote: quote }

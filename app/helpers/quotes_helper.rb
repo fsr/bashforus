@@ -3,11 +3,9 @@ module QuotesHelper
 		word =~ /^<([^>]+)>$/
 	end
 	def is_tag word
-		logger.debug "Checking if #{word} is tag"
 		not TagParser.new(word).parse.empty?
 	end
 	def tag_html word
-		logger.debug "Creating HTML for tag #{word}"
 		tag = Tag.new TagParser.new(word).parse.first
 		"<tag><a href='#{tag_url tag.strip}'>#{tag}</a></tag>"
 	end

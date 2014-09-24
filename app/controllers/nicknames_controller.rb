@@ -7,7 +7,7 @@ class NicknamesController < ApplicationController
   before_filter :collect_tags, only: :show
 
   def index
-  	@nicknames = Quote.source_counts.sort_by do |source|
+  	@nicknames = @channel.quotes.source_counts.sort_by do |source|
       source.taggings_count
     end.reverse
   end
@@ -29,10 +29,10 @@ class NicknamesController < ApplicationController
 
   private
   def set_nickname
-    @nickname = Nickname.new params[:id]
+    @nickname = Nickname.new '@' + params[:id]
   end
   def filter_quotes
-    @quotes = Quote.tagged_with(@nickname,on: :sources)
+    @quotes = @channel.quotes.tagged_with(@nickname,on: :sources)
   end
   def collect_tags
     @tags = @quotes.collect do |quote|

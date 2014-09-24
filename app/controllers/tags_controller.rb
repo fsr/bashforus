@@ -5,7 +5,7 @@ class TagsController < ApplicationController
   before_filter :collect_sources, only: :show
 
   def index
-  	@tags = Quote.tag_counts.sort_by do |tag|
+  	@tags = @channel.quotes.tag_counts.sort_by do |tag|
       tag.taggings_count
     end.reverse
   end
@@ -18,7 +18,7 @@ class TagsController < ApplicationController
     @tag = params[:id]
   end
   def filter_quotes
-    @quotes = Quote.tagged_with(@tag,on: :tags)
+    @quotes = @channel.quotes.tagged_with(@tag,on: :tags)
   end
   def collect_sources
     @sources = @quotes.collect do |quote|
