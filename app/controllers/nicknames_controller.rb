@@ -36,7 +36,7 @@ class NicknamesController < ApplicationController
     @nickname =  Nickname.new(params[:id])
   end
   def filter_quotes
-    @quotes = @channel.quotes.tagged_with(@nickname,on: :sources)
+    @quotes = @channel.quotes.tagged_with(@nickname.strip,on: :sources)
   end
   def collect_tags
     @tags = @quotes.collect do |quote|
