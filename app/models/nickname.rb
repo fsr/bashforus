@@ -1,9 +1,9 @@
 class Nickname < String
 	def is_claimable?
-		User.tagged_with(self, on: :sources).count == 0
+		User.tagged_with(self.strip, on: :sources).count == 0
 	end
 	def is_claimed?
-		User.tagged_with(self, on: :sources).count > 0
+		User.tagged_with(self.strip, on: :sources).count > 0
 	end
 	def is_revertable?
 		self.is_claimed?
@@ -12,12 +12,12 @@ class Nickname < String
 		self.is_claimable?
 	end
 	def claim_to user
-		user.source_list.add self
+		user.source_list.add self.strip
 		user.save
 	end
 	def revert
-		user = User.tagged_with(self, on: :sources).first
-		user.source_list.remove self
+		user = User.tagged_with(self.strip, on: :sources).first
+		user.source_list.remove self.strip
 		user.save
 	end
 	def user

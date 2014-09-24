@@ -4,10 +4,10 @@
     p
       | talking about
       = @tags.to_sentence.html_safe
-    - if can? :claim, @nickname
-      p= link_to "claim", claim_by_path(@nickname), method: :post, class: 'btn btn-info'
-    - if can? :revert, @nickname
-      p= link_to "revert", revert_by_path(@nickname), method: :post, class: 'btn btn-warning'
+    - if can? :claim, @nickname.strip
+      p= link_to "claim", claim_by_path(@nickname.strip), method: :post, class: 'btn btn-info'
+    - if can? :revert, @nickname.strip
+      p= link_to "revert", revert_by_path(@nickname.strip), method: :post, class: 'btn btn-warning'
 .container
   .row
     .col-md-12
