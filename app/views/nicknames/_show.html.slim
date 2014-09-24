@@ -5,5 +5,5 @@
     - @channel.quotes.tagged_with(nickname, on: :sources).each do |quote|
       = render partial: 'quotes/show', locals: { quote: quote }
   - else
-    - @channel.quotes.tagged_with(nickname, on: :sources).sort_by{|q|q.rating}.last(quote_limit).each do |quote|
+    - @channel.quotes.tagged_with(nickname, on: :sources).sort_by{|q|q.rating}.last(quote_limit).reverse_each do |quote|
       = render partial: 'quotes/show', locals: { quote: quote }
