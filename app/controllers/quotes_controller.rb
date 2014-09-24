@@ -9,7 +9,7 @@ class QuotesController < ApplicationController
       if current_user.has_role? :admin
         @quotes = @channel.quotes
       else
-        @quotes = @channel.quotes.visible_and_owned_by(current_user.id)
+        @quotes = @channel.quotes.visible_or_owned_by(current_user.id)
       end
     else
       @channel.quotes.visible
