@@ -1,0 +1,4 @@
+- if quote.visible
+  = link_to fa_icon('eye'), disable_quote_path(quote), method: :post, style: 'color: #5e5e5e', class: 'btn btn-default'
+- else
+  = link_to fa_icon('eye-slash'), enable_quote_path(quote), method: :post, style: 'color: #5e5e5e', class: 'btn btn-default'

@@ -1,0 +1,4 @@
+- if current_user.present? && current_user.dislikes.where(quote:quote).count > 0
+  = link_to fa_icon('thumbs-o-down')+' '+quote.dislikes.count.to_s, dislike_quote_path(quote), method: :delete, style: 'border-color: #f0ad4e; background-color: #f0ad4e; color: #5e5e5e; font-weight: bold;', class: 'btn btn-default', id: "quote_#{quote.id}_dislike_btn", remote: true
+- else
+  = link_to fa_icon('thumbs-o-down')+' '+quote.dislikes.count.to_s, dislike_quote_path(quote), method: :post, style: 'color: #f0ad4e', class: 'btn btn-default', id: "quote_#{quote.id}_dislike_btn", remote: true

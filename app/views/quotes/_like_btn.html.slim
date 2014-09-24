@@ -1,0 +1,4 @@
+- if current_user.present? and current_user.likes.where(quote:quote).count > 0
+  = link_to fa_icon('thumbs-o-up')+' '+quote.likes.count.to_s, like_quote_path(quote), method: :delete, style: 'border-color: #5cb85c; background-color: #5cb85c; color: #5e5e5e; font-weight: bold;', class: 'btn btn-default', id: "quote_#{quote.id}_like_btn", remote: true
+- else
+  = link_to fa_icon('thumbs-o-up')+' '+quote.likes.count.to_s, like_quote_path(quote), method: :post, style: 'color: #5cb85c', class: 'btn btn-default', id: "quote_#{quote.id}_like_btn", remote: true

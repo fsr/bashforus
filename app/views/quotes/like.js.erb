@@ -1,0 +1,2 @@
+$("#quote_<%= @quote.id %>_dislike_btn").replaceWith("<%= escape_javascript( render(partial: 'quotes/dislike_btn', locals:{quote:@quote}) ) %>");
+$("#quote_<%= @quote.id %>_like_btn").replaceWith("<%= escape_javascript( render(partial: 'quotes/like_btn', locals:{quote:@quote}) ) %>");

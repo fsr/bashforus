@@ -8,12 +8,18 @@ class DislikesController < ApplicationController
       @quote.likes.where(user:current_user).each{|l|l.destroy}
       @quote.dislikes.create user:current_user
     end
-  	redirect_to request.referrer
+    respond_to do |format|
+      format.html { redirect_to request.referrer }
+      format.js   { render 'quotes/dislike' }
+    end
   end
 
   def destroy
     @quote.dislikes.where(user:current_user).each{|l|l.destroy}
-    redirect_to request.referrer
+    respond_to do |format|
+      format.html { redirect_to request.referrer }
+      format.js   { render 'quotes/dislike' }
+    end
   end
 
   private
