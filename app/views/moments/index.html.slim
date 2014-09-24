@@ -1,2 +1,2 @@
-- @quotes.each do |date,quote_group|
+- @quotes.reverse_each do |date,quote_group|
   = render partial: 'moments/quote_group', locals:{date:date,quote_group:quote_group}
