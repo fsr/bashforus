@@ -6,7 +6,7 @@ defaults: &defaults
     np_word_separators: >
       [ \n\r\t]
     p_word_separators: >
-      [:,!'"?+\(\)\[\]-]
+      [:,!'"?+\(\)\[\]]
     nickname_prefix: '@' 
     tag_prefix: '#'
 development:
