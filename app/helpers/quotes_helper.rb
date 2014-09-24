@@ -15,7 +15,7 @@ module QuotesHelper
 	def nickname_html word
 		nickname = Nickname.new SourceParser.new(word).parse.first
 		color = ( nickname.user && nickname.user.color ) ? nickname.user.color : Digest::MD5.hexdigest(nickname)[1..6]
-		"<nickname style='background-color: ##{color}'><a href='#{by_url nickname.strip}'>#{nickname}</a></nickname>"
+		"<nickname style='background-color: ##{color}; color: #{sprintf("%X", color.hex ^ 0xFFFFFF)}'><a href='#{by_url nickname.strip}'>#{nickname}</a></nickname>"
 	end
 	def quote_url quote
 		Rails.application.routes.url_helpers.quote_url(id: quote.id, host: CONFIG['domain'],subdomain: ( @channel || channel).subdomain)

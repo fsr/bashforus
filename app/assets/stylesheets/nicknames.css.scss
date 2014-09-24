@@ -1,3 +1,5 @@
 @import 'highlights';
 
-nickname { @include highlighted_word; }
+nickname {
+	@include highlighted_word;
+}
