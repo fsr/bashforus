@@ -1,5 +1,9 @@
 .container
   h1= nickname_html(nickname.name).html_safe
   hr
-  - Quote.tagged_with(nickname, on: :sources).each do |quote|
-    = render partial: 'quotes/show', locals: { quote: quote }
+  - unless defined?(quote_limit)
+    - @channel.quotes.tagged_with(nickname, on: :sources).each do |quote|
+      = render partial: 'quotes/show', locals: { quote: quote }
+  - else
+    - @channel.quotes.tagged_with(nickname, on: :sources).sort_by{|q|q.rating}.last(quote_limit).each do |quote|
+      = render partial: 'quotes/show', locals: { quote: quote }
