@@ -20,6 +20,7 @@ staging:
     port: 8983
     log_level: INFO
     path: /solr/staging
+    solr_home: solr
 
 test:
   solr:

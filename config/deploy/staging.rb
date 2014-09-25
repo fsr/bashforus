@@ -11,7 +11,7 @@ namespace :deploy do
   task :setup_solr_data_dir do
   	on roles :app do
 	  within shared_path do
-	    execute :mkdir, "-p solr || true"
+	    execute :mkdir, "-p solr/staging || true"
 	  end
 	end
   end
@@ -23,7 +23,7 @@ namespace :solr do
   	on roles :app do
 	  within fetch(:release_path) do
         with rails_env: fetch(:rails_env) do
-          execute :bundle, "exec sunspot-solr start"
+          execute :bundle, "exec sunspot-solr start --port=8983 --data-directory=#{shared_path}/solr/default/data --pid-dir=#{shared_path}/tmp/pids || true"
         end
       end
 	end
@@ -33,7 +33,7 @@ namespace :solr do
   	on roles :app do
 	  within fetch(:release_path) do
         with rails_env: fetch(:rails_env) do
-          execute :bundle, "exec sunspot-solr stop || true" 
+          execute :bundle, "exec sunspot-solr stop --port=8983 --data-directory=#{shared_path}/solr/default/data --pid-dir=#{shared_path}/tmp/pids  || true" 
         end
       end
     end
@@ -53,4 +53,4 @@ namespace :solr do
 end
  
 after 'deploy:starting', 'deploy:setup_solr_data_dir'
-after 'deploy:published', 'solr:reindex'
+after 'deploy:finishing', 'solr:reindex'
