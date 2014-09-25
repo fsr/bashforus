@@ -2,7 +2,7 @@ class NicknamesController < ApplicationController
 
   include QuotesHelper
 
-  before_filter :set_nickname, only: [ :show, :claim, :revert ]
+  before_filter :set_nickname, only: [ :show, :claim, :revert, :owner ]
   before_filter :filter_quotes, only: :show
   before_filter :collect_tags, only: :show
 
@@ -30,7 +30,9 @@ class NicknamesController < ApplicationController
     redirect_to request.referrer
   end
 
-  private
+  def owner
+    @user = @nickname.user
+  end
 
   private
   def set_nickname

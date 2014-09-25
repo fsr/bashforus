@@ -1,0 +1,4 @@
+.page-header
+  h3 Search Results
+- @query.results.each do |result|
+  p= result.to_found_entry @channel if result.is_findable?

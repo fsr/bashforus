@@ -47,10 +47,13 @@ Rails.application.routes.draw do
       member do
         post :claim
         post :revert
+        get :owner
       end
     end
     resources :tag, controller: 'tags'
     resources :moment, controller: 'moments'
+    get '/search', to: 'search_requests#new', as: :search_requests
+    post '/search', to: 'search_requests#show'
   end
 
   match '/', to: 'channels#index', constraints: { subdomain: '' }, via: [:get, :post]

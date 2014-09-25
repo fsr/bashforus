@@ -52,3 +52,5 @@ body { padding: 50px 0 20px 0; }
     color: #999999;
 }
 
+a.search-result.quote:before { content: 'Quote: ' }
+a.search-result.user:before { content: 'User: ' }

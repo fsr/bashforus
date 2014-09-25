@@ -5,6 +5,8 @@
   - if not defined? action_bar
 	.col-sm-4
 	  = render partial: 'quotes/action', locals:{quote:quote}
+  .col-sm-12
+    = render partial: 'comments/show', locals:{quote:quote}
 .row
   .col-md-12.col-sm-12.col-xs-12
     hr

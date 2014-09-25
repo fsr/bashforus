@@ -16,6 +16,8 @@
           li class="#{navigation_active_on :tags}"= link_to 'by tag', tag_index_path
           li class="#{navigation_active_on :nicknames}"= link_to 'by source', by_index_path
           li class="#{navigation_active_on :moments}"= link_to 'by date', moment_index_path
+      = simple_form_for SearchRequest.new, html: { style: 'display: inline' } do |f|
+        = f.input_field :query, size: 15, style: 'margin: 15px; display: inline', placeholder: 'search'
       ul.nav.navbar-nav.navbar-right
         - unless current_user
           li class="#{navigation_active_on 'devise/sessions'}"= link_to 'Sign In', new_user_session_url( subdomain: '')
@@ -23,5 +25,4 @@
         - else
           li class="#{navigation_active_on 'devise/registrations'}"= link_to 'Profile', edit_user_registration_path
           li class="#{navigation_active_on 'devise/sessions'}"= link_to 'Sign Out', destroy_user_session_url( subdomain: ''), method: :delete
-      - if can? :manage, User
-        = render partial: 'shared/admin_navbar'
+      = render(partial: 'shared/admin_navbar') if current_user && current_user.has_role?(:admin)

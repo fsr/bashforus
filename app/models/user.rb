@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include UsersHelper
   rolify
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -10,6 +11,9 @@ class User < ActiveRecord::Base
   has_many :comments
   has_and_belongs_to_many :users
   acts_as_taggable_on :sources
+  searchable do
+    text :email
+  end
   def colorcodes
     self.source_list.collect do |nickname|
       codestring = Digest::MD5.hexdigest(nickname)
@@ -21,5 +25,11 @@ class User < ActiveRecord::Base
   def notify resource
   	Pushover.notification resource.to_pushover.merge(user:pushover_key) unless pushover_key.blank?
   	XmppClient.notification resource.to_xmpp.merge(user:jabber_id) unless jabber_id.blank?
+  end
+  def is_findable?
+    not source_list.empty?
+  end
+  def to_found_entry channel
+    found_user_html self, channel
   end
 end

@@ -18,6 +18,10 @@ class Quote < ActiveRecord::Base
 	scope :visible, ->              { where(visible:true) }
 	scope :visible_or_owned_by, -> (owner_id) { where("visible == 't' or owner_id == ?",owner_id )}
 	
+	searchable do
+		text :body
+	end
+
 	def rating
 		(self.likes.count - self.dislikes.count) + "0.#{created_at.to_i}".to_f
 	end
@@ -57,6 +61,13 @@ class Quote < ActiveRecord::Base
 			title: "You have been quoted by #{owner.email}",
 			message: "#{body}, visit: #{quote_url(self)} for more details"
 		}
+	end
+
+	def to_found_entry channel
+		found_quote_html self, channel
+	end
+	def is_findable?
+	    true
 	end
 	private
 	def set_related_sources

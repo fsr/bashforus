@@ -1,0 +1,18 @@
+.panel.panel-default id="quote_#{quote.id}_comments"
+  .panel-heading
+    h4.panel-title
+      = link_to 'Comments', "#quote_#{quote.id}_comment_collapse", data: { parent: "#quote_#{quote.id}_comments", toggle: 'collapse'}
+  .panel-collapse.collapse.in id="#quote_#{quote.id}_comments"
+    .panel-body
+      - quote.comments.each do |comment|
+        .col-sm-2
+          - if comment.user
+            label= comment.user.email
+          br
+          = l comment.created_at, format: :short
+        .col-sm-10
+          = comment.body
+        .col-sm-12
+          hr
+    .panel-body
+      = render partial: 'comments/form', locals:{quote:quote}

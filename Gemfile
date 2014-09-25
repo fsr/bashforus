@@ -25,6 +25,8 @@ gem 'font-awesome-rails'
 gem 'pushover'
 gem 'xmpp4r'
 gem 'will_paginate', '~> 3.0'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
@@ -42,4 +44,5 @@ group :development do
   gem 'capistrano3-puma', github: 'seuros/capistrano-puma'
   gem 'capistrano-team_notifications', require: false
   gem 'mailcatcher'
+  gem 'progress_bar'
 end

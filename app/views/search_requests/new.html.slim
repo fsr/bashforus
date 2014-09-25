@@ -1,0 +1,6 @@
+.page-header
+  h3 Search
+p
+  = simple_form_for @search_request, url: search_path do |f|
+    = f.input :query
+    = f.button :submit

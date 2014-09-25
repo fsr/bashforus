@@ -26,7 +26,7 @@ class Admin::ChannelsController < ApplicationController
 
   private
   def channel_params
-  	params.require(:channel).permit(:name,:subdomain,:is_private,:send_xmpp,:send_boolean,:send_twitter)
+  	params.require(:channel).permit(:name,:subdomain,:is_private,:send_xmpp,:send_pushover,:send_twitter)
   end
   def channel_membership_params
   	params.require(:channel).permit(user_ids:[])

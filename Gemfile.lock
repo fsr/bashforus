@@ -100,6 +100,7 @@ GEM
       activerecord (>= 4.0.0)
     haml (4.0.5)
       tilt
+    highline (1.6.21)
     hike (1.2.3)
     hpricot (0.8.6)
     html2slim (0.1.0)
@@ -127,16 +128,24 @@ GEM
       sqlite3-ruby
       thin
     mime-types (1.25.1)
+    mini_portile (0.6.0)
     minitest (5.4.1)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
+    nokogiri (1.6.3.1)
+      mini_portile (= 0.6.0)
     open4 (1.3.4)
+    options (2.3.2)
     orm_adapter (0.5.0)
     polyglot (0.3.5)
     powify (0.9.1)
+    pr_geohash (1.0.0)
+    progress_bar (1.0.3)
+      highline (~> 1.6.1)
+      options (~> 2.3.0)
     puma (2.9.1)
       rack (>= 1.1, < 2.0)
     pushover (1.0.4)
@@ -168,6 +177,8 @@ GEM
       json (~> 1.4)
     ref (1.0.5)
     rolify (3.4.1)
+    rsolr (1.0.10)
+      builder (>= 2.1.2)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -206,6 +217,14 @@ GEM
       colorize
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    sunspot (2.1.1)
+      pr_geohash (~> 1.0)
+      rsolr (~> 1.0.7)
+    sunspot_rails (2.1.1)
+      nokogiri
+      rails (>= 3)
+      sunspot (= 2.1.1)
+    sunspot_solr (2.1.1)
     sys-proctable (0.9.4)
     temple (0.6.8)
     therubyracer (0.12.1)
@@ -263,6 +282,7 @@ DEPENDENCIES
   jquery-rails
   mailcatcher
   powify
+  progress_bar
   puma
   pushover
   rails (= 4.1.4)
@@ -272,6 +292,8 @@ DEPENDENCIES
   simple_form
   slim
   sqlite3
+  sunspot_rails
+  sunspot_solr
   therubyracer
   turbolinks
   uglifier (>= 1.3.0)
