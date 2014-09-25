@@ -23,7 +23,7 @@ namespace :solr do
   	on roles :app do
 	  within fetch(:release_path) do
         with rails_env: fetch(:rails_env) do
-          execute :bundle, "exec sunspot-solr start --port=8983 --data-directory=#{shared_path}/solr/default/data --pid-dir=#{shared_path}/tmp/pids || true"
+          execute :bundle, "exec sunspot-solr start --port=8983 --data-directory=#{shared_path}/solr/development/data --pid-dir=#{shared_path}/tmp/pids --solr-home=#{shared_path}/solr || true"
         end
       end
 	end
@@ -33,7 +33,7 @@ namespace :solr do
   	on roles :app do
 	  within fetch(:release_path) do
         with rails_env: fetch(:rails_env) do
-          execute :bundle, "exec sunspot-solr stop --port=8983 --data-directory=#{shared_path}/solr/default/data --pid-dir=#{shared_path}/tmp/pids  || true" 
+          execute :bundle, "exec sunspot-solr stop --port=8983 --data-directory=#{shared_path}/solr/development/data --pid-dir=#{shared_path}/tmp/pids --solr-home=#{shared_path}/solr || true" 
         end
       end
     end
