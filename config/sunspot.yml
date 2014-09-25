@@ -3,7 +3,7 @@ production:
     hostname: localhost
     port: 8983
     log_level: WARNING
-    path: /solr/data
+    path: /solr/production
     read_timeout: 2
     open_timeout: 0.5
 
@@ -19,7 +19,7 @@ staging:
     hostname: localhost
     port: 8983
     log_level: INFO
-    path: /solr/data
+    path: /solr/staging
 
 test:
   solr:
